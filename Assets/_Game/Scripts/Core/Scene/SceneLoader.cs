@@ -10,7 +10,9 @@ public static class SceneLoader
         BootScene,
         MenuScene,
         GameScene,
-        AttackScene
+        Game2DScene,
+        Game1DScene,
+        Game0DScene
     }
 
     private static readonly float MAX_LOAD_PROGRESS = 1f;
