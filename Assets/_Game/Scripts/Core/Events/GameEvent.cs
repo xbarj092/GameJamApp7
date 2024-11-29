@@ -4,6 +4,8 @@ public class GameEvent : MonoBehaviour
 {
     [SerializeField] private GameEventType _gameEventType;
 
+    public bool Permanent;
+
     private IEventStrategy _strategy;
     private EventStrategyFactory _strategyFactory;
 
@@ -16,5 +18,10 @@ public class GameEvent : MonoBehaviour
     public void ApplyEvent()
     {
         _strategy.ApplyEvent();
+    }
+
+    public void StopEvent()
+    {
+        _strategy.StopEvent();
     }
 }

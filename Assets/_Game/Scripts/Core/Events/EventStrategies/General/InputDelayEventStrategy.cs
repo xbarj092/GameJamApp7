@@ -4,4 +4,9 @@ public class InputDelayEventStrategy : IEventStrategy
     {
 
     }
+
+    public void StopEvent()
+    {
+
+    }
 }

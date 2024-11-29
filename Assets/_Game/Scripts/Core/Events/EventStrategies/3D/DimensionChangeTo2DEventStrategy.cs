@@ -4,4 +4,9 @@ public class DimensionChangeTo2DEventStrategy : IEventStrategy
     {
         SceneLoadManager.Instance.GoGameToGame2D();
     }
+
+    public void StopEvent()
+    {
+        SceneLoadManager.Instance.GoGame2DToGame();
+    }
 }
