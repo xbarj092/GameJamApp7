@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class GameEvent : MonoBehaviour
 {
-    [SerializeField] private GameEventType _gameEventType;
-
+    public GameEventType GameEventType;
     public bool Permanent;
 
     private IEventStrategy _strategy;
@@ -12,7 +11,7 @@ public class GameEvent : MonoBehaviour
     private void Start()
     {
         _strategyFactory = new();
-        _strategy = _strategyFactory.CreateEventStrategy(_gameEventType);
+        _strategy = _strategyFactory.CreateEventStrategy(GameEventType);
     }
 
     public void ApplyEvent()
