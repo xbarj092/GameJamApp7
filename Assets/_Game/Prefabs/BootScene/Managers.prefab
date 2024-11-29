@@ -132,6 +132,7 @@ MonoBehaviour:
   - {fileID: 7958582485701604806}
   _events1D:
   - {fileID: 8705357003530239405}
+  Events: []
 --- !u!114 &8705357003530239405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7c7aff0e6612b49a38d007f7c87732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameEventType: 4
+  GameEventType: 4
+  Permanent: 1
 --- !u!114 &7958582485701604806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7c7aff0e6612b49a38d007f7c87732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameEventType: 5
+  GameEventType: 5
+  Permanent: 1
 --- !u!114 &37743862471369129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7c7aff0e6612b49a38d007f7c87732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameEventType: 6
+  GameEventType: 6
+  Permanent: 1
 --- !u!1 &7531105811605514934
 GameObject:
   m_ObjectHideFlags: 0

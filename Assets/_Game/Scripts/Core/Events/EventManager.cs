@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class EventManager : MonoSingleton<EventManager>
@@ -9,8 +8,18 @@ public class EventManager : MonoSingleton<EventManager>
     [SerializeField] private List<GameEvent> _events2D;
     [SerializeField] private List<GameEvent> _events1D;
 
-    private List<GameEvent> _activePermanentEvents;
+    public List<GameEvent> Events;
+
+    private List<GameEvent> _activePermanentEvents = new();
     private GameEvent _currentEvent;
+
+    private void Awake()
+    {
+        Events.AddRange(_eventsGeneral);
+        Events.AddRange(_events3D);
+        Events.AddRange(_events2D);
+        Events.AddRange(_events1D);
+    }
 
     public void ChooseEvent()
     {

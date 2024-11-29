@@ -1,8 +1,17 @@
+using System.Linq;
+
 public class DimensionChangeTo2DEventStrategy : IEventStrategy
 {
     public void ApplyEvent()
     {
-        SceneLoadManager.Instance.GoGameToGame2D();
+        if (SceneLoadManager.Instance.IsSceneLoaded(SceneLoader.Scenes.GameScene1D))
+        {
+            EventManager.Instance.StopPermanentEvent(EventManager.Instance.Events.First(gameEvent => gameEvent.GameEventType == GameEventType.DimensionChangeTo1D));
+        }
+        else if (SceneLoadManager.Instance.IsSceneLoaded(SceneLoader.Scenes.GameScene))
+        {
+            SceneLoadManager.Instance.GoGameToGame2D();
+        }
     }
 
     public void StopEvent()
