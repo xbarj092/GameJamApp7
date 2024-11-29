@@ -4,4 +4,9 @@ public class InputChangeEventStrategy : IEventStrategy
     {
 
     }
+
+    public void StopEvent()
+    {
+
+    }
 }

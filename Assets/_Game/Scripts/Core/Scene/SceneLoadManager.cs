@@ -34,7 +34,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     public void GoGameToGame2D()
     {
         SceneLoader.OnSceneLoadDone += OnGameToGame2DLoadDone;
-        SceneLoader.LoadScene(SceneLoader.Scenes.Game2DScene, toUnload: SceneLoader.Scenes.GameScene);
+        SceneLoader.LoadScene(SceneLoader.Scenes.GameScene2D, toUnload: SceneLoader.Scenes.GameScene);
     }
 
     private void OnGameToGame2DLoadDone(SceneLoader.Scenes scenes)
@@ -45,7 +45,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     public void GoGame2DToGame1D()
     {
         SceneLoader.OnSceneLoadDone += OnGame2DToGame1DLoadDone;
-        SceneLoader.LoadScene(SceneLoader.Scenes.Game1DScene, toUnload: SceneLoader.Scenes.Game2DScene);
+        SceneLoader.LoadScene(SceneLoader.Scenes.GameScene1D, toUnload: SceneLoader.Scenes.GameScene2D);
     }
 
     private void OnGame2DToGame1DLoadDone(SceneLoader.Scenes scenes)
@@ -56,7 +56,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     public void GoGame1DToGame0D()
     {
         SceneLoader.OnSceneLoadDone += OnGame1DToGame0DLoadDone;
-        SceneLoader.LoadScene(SceneLoader.Scenes.Game0DScene, toUnload: SceneLoader.Scenes.Game1DScene);
+        SceneLoader.LoadScene(SceneLoader.Scenes.GameScene0D, toUnload: SceneLoader.Scenes.GameScene1D);
     }
 
     private void OnGame1DToGame0DLoadDone(SceneLoader.Scenes scenes)
@@ -67,7 +67,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     public void GoGame1DToGame2D()
     {
         SceneLoader.OnSceneLoadDone += OnGame1DToGame2DLoadDone;
-        SceneLoader.LoadScene(SceneLoader.Scenes.Game2DScene, toUnload: SceneLoader.Scenes.Game1DScene);
+        SceneLoader.LoadScene(SceneLoader.Scenes.GameScene2D, toUnload: SceneLoader.Scenes.GameScene1D);
     }
 
     private void OnGame1DToGame2DLoadDone(SceneLoader.Scenes scenes)
@@ -78,7 +78,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     public void GoGame2DToGame()
     {
         SceneLoader.OnSceneLoadDone += OnGame2DToGameLoadDone;
-        SceneLoader.LoadScene(SceneLoader.Scenes.GameScene, toUnload: SceneLoader.Scenes.Game2DScene);
+        SceneLoader.LoadScene(SceneLoader.Scenes.GameScene, toUnload: SceneLoader.Scenes.GameScene2D);
     }
 
     public void OnGame2DToGameLoadDone(SceneLoader.Scenes scenes)
