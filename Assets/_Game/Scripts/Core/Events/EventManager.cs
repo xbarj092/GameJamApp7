@@ -11,6 +11,7 @@ public class EventManager : MonoSingleton<EventManager>
     public List<GameEvent> Events;
 
     private List<GameEvent> _activePermanentEvents = new();
+    public List<GameEvent> ActivePermanentEvents => _activePermanentEvents;
     private GameEvent _currentEvent;
 
     private void Awake()

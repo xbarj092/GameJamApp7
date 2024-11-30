@@ -4,6 +4,7 @@ public class GameEvent : MonoBehaviour
 {
     public GameEventType GameEventType;
     public bool Permanent;
+    public Sprite Sprite;
 
     private IEventStrategy _strategy;
     private EventStrategyFactory _strategyFactory;
