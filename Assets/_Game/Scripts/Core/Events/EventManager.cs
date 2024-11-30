@@ -14,6 +14,8 @@ public class EventManager : MonoSingleton<EventManager>
     public List<GameEvent> ActivePermanentEvents => _activePermanentEvents;
     private GameEvent _currentEvent;
 
+    public event System.Action OnPermanentEventAdded;
+
     private void Awake()
     {
         Events.AddRange(_eventsGeneral);
@@ -44,6 +46,7 @@ public class EventManager : MonoSingleton<EventManager>
         _currentEvent = validEvents[randomEventIndex];
         if (_currentEvent.Permanent)
         {
+            OnPermanentEventAdded?.Invoke();
             _activePermanentEvents.Add(_currentEvent);
         }
     }
