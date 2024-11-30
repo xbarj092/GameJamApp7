@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 8705357003530239405}
   - component: {fileID: 7958582485701604806}
   - component: {fileID: 37743862471369129}
+  - component: {fileID: 2830093545140301643}
   m_Layer: 0
   m_Name: EventManager
   m_TagString: Untagged
@@ -172,7 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e03d84cf2d96d147879a08ad2253dc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventsGeneral: []
+  _eventsGeneral:
+  - {fileID: 2830093545140301643}
   _events3D:
   - {fileID: 37743862471369129}
   _events2D:
@@ -180,6 +182,7 @@ MonoBehaviour:
   _events1D:
   - {fileID: 8705357003530239405}
   Events: []
+  InputDelay: 0
 --- !u!114 &8705357003530239405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameEventType: 4
   Permanent: 1
-  Sprite: {fileID: 21300000, guid: f9977134dc9d86e41a732a8ed4f1e0ac, type: 3}
+  Sprite: {fileID: 21300000, guid: 590a7de51a0cd5b44a15914610ccec1b, type: 3}
 --- !u!114 &7958582485701604806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameEventType: 5
   Permanent: 1
-  Sprite: {fileID: 21300000, guid: a4048aac540d5a644833cd24053dcfc5, type: 3}
+  Sprite: {fileID: 21300000, guid: 590a7de51a0cd5b44a15914610ccec1b, type: 3}
 --- !u!114 &37743862471369129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +227,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameEventType: 6
   Permanent: 1
-  Sprite: {fileID: 21300000, guid: 62ce9d7194820c2479982d1283b4ff4a, type: 3}
+  Sprite: {fileID: 21300000, guid: 590a7de51a0cd5b44a15914610ccec1b, type: 3}
+--- !u!114 &2830093545140301643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231721350433640374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7c7aff0e6612b49a38d007f7c87732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEventType: 3
+  Permanent: 1
+  Sprite: {fileID: 21300000, guid: ef546e9995834514fb2d943687c4ce1c, type: 3}
 --- !u!1 &5704023380190178656
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +291,8 @@ MonoBehaviour:
     type: 3}
   _stringStorage:
   - {fileID: 11400000, guid: bb7968cad64cf984c88da80812072f1a, type: 2}
+  - {fileID: 11400000, guid: c0738ae1510ae2147bbb60e809627ccd, type: 2}
+  - {fileID: 11400000, guid: c795389a8a6234a4cae43100688f7f81, type: 2}
 --- !u!1 &7531105811605514934
 GameObject:
   m_ObjectHideFlags: 0

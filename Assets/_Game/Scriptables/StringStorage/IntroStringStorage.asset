@@ -12,5 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f84bec4a9d4092428f078d4824ce73a, type: 3}
   m_Name: IntroStringStorage
   m_EditorClassIdentifier: 
-  <StringStorageType>k__BackingField: 0
-  <Strings>k__BackingField: []
+  <StringStorageType>k__BackingField: 1
+  <FirstTimeStrings>k__BackingField:
+  - This is intro text
+  - I am a good person, deff not bad AI
+  - I need to get one information from bad AI
+  - I heard that this information is located on harddrive somewhere in this tunnel
+  <NextTimeStrings>k__BackingField:
+  - You already know why im here
+  - Get in the tunnel

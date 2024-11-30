@@ -17,12 +17,14 @@ public class HUD : MonoBehaviour
     {
         GameManager.Instance.OnRepairTimerReset += StartTimeToNextRepair;
         EventManager.Instance.OnPermanentEventAdded += StartTimeToNextRepair;
+        EventManager.Instance.OnPermanentEventRemoved += StopAllCoroutines;
     }
 
     private void OnDisable()
     {
         GameManager.Instance.OnRepairTimerReset -= StartTimeToNextRepair;
         EventManager.Instance.OnPermanentEventAdded -= StartTimeToNextRepair;
+        EventManager.Instance.OnPermanentEventRemoved -= StopAllCoroutines;
 
         StopAllCoroutines();
     }

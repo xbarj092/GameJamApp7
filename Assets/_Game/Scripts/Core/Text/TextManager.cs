@@ -9,11 +9,13 @@ public class TextManager : MonoSingleton<TextManager>
     
     private List<StringStorage> _playedStrings = new();
 
+    public TextFieldShower CurrentText;
+
     public void ShowText(StringStorageType stringStorageType)
     {
-        TextFieldShower textField = Instantiate(_textFieldPrefab, ScreenManager.Instance.GetActiveCanvasTransform());
+        CurrentText = Instantiate(_textFieldPrefab, ScreenManager.Instance.GetActiveCanvasTransform());
         StringStorage relevantStringStorage = _stringStorage.First(storage => storage.StringStorageType == stringStorageType);
-        textField.InitTextField(!_playedStrings.Contains(relevantStringStorage) ? relevantStringStorage.FirstTimeStrings : relevantStringStorage.NextTimeStrings);
+        CurrentText.InitTextField(!_playedStrings.Contains(relevantStringStorage) ? relevantStringStorage.FirstTimeStrings : relevantStringStorage.NextTimeStrings);
 
         if (!_playedStrings.Contains(relevantStringStorage))
         {

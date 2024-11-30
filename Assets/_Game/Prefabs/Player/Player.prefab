@@ -79,8 +79,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f976d51a8dfba74692ed58123b6e6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  virtualCamera: {fileID: 0}
-  speed: 10
+  _virtualCamera: {fileID: 0}
+  _rigidbody: {fileID: 3475997270737270281}
+  _speed: 10
+  _inputDelay: 0.5
 --- !u!114 &7857317836237923233
 MonoBehaviour:
   m_ObjectHideFlags: 0
