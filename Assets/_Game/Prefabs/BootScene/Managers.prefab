@@ -32,6 +32,7 @@ Transform:
   - {fileID: 5894296070125922409}
   - {fileID: 61220583512331465}
   - {fileID: 757193089101702183}
+  - {fileID: 4096927945459895838}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3218876386703594225
@@ -78,6 +79,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad5ac1d65cf61d4da2c78165710f1a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3721645313130955859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4096927945459895838}
+  - component: {fileID: 8849487024498112983}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4096927945459895838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3721645313130955859}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7460344270319024745}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8849487024498112983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3721645313130955859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21fb7e0c0a80c29438bd87a1de7b9293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeToNextRepair: 0
 --- !u!1 &5231721350433640374
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameEventType: 4
   Permanent: 1
+  Sprite: {fileID: 0}
 --- !u!114 &7958582485701604806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameEventType: 5
   Permanent: 1
+  Sprite: {fileID: 0}
 --- !u!114 &37743862471369129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameEventType: 6
   Permanent: 1
+  Sprite: {fileID: 0}
 --- !u!1 &7531105811605514934
 GameObject:
   m_ObjectHideFlags: 0
