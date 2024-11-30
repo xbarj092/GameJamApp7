@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class EventManager : MonoSingleton<EventManager>
 {
@@ -11,6 +11,8 @@ public class EventManager : MonoSingleton<EventManager>
 
     public List<GameEvent> Events;
     public float InputDelay;
+    public InputActionReference MovementAction;
+    public List<string> CurrentBinding = new();
 
     private List<GameEvent> _activePermanentEvents = new();
     public List<GameEvent> ActivePermanentEvents => _activePermanentEvents;
@@ -18,6 +20,12 @@ public class EventManager : MonoSingleton<EventManager>
 
     public event System.Action OnPermanentEventAdded;
     public event System.Action OnPermanentEventRemoved;
+    public event System.Action<List<string>> OnInputChanged;
+    public void OnInputChangeInvoke(List<string> inputs)
+    {
+        CurrentBinding = inputs;
+        OnInputChanged?.Invoke(inputs);
+    }
 
     private void Awake()
     {
