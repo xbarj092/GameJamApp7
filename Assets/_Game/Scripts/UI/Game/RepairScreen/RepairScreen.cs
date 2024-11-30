@@ -24,7 +24,7 @@ public class RepairScreen : GameScreen
         _chosenGameEvent = gameEvent;
         _chooseRepairSection.gameObject.SetActive(false);
         _repairSection.gameObject.SetActive(true);
-        _repairSection.StartRepairing(gameEvent);
+        _repairSection.StartRepairing();
     }
 
     private void OnRepairComplete(bool success)

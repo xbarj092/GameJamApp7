@@ -193,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameEventType: 4
   Permanent: 1
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: f9977134dc9d86e41a732a8ed4f1e0ac, type: 3}
 --- !u!114 &7958582485701604806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameEventType: 5
   Permanent: 1
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: a4048aac540d5a644833cd24053dcfc5, type: 3}
 --- !u!114 &37743862471369129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameEventType: 6
   Permanent: 1
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 62ce9d7194820c2479982d1283b4ff4a, type: 3}
 --- !u!1 &7531105811605514934
 GameObject:
   m_ObjectHideFlags: 0
