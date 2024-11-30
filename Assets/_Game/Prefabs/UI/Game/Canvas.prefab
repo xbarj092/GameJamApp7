@@ -134,6 +134,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 4445377546884710384, guid: 9ea115ad28b1a4740831373ef80b5b79,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.6886792
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445377546884710384, guid: 9ea115ad28b1a4740831373ef80b5b79,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.6886792
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445377546884710384, guid: 9ea115ad28b1a4740831373ef80b5b79,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.6886792
+      objectReference: {fileID: 0}
     - target: {fileID: 5338912926539152168, guid: 9ea115ad28b1a4740831373ef80b5b79,
         type: 3}
       propertyPath: m_Pivot.x
