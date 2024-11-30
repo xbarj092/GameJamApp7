@@ -22,7 +22,7 @@ public class GameManager : MonoSingleton<GameManager>
             CurrentLevel = MaxLevel;
             EventManager.Instance.ChooseEvent();
         }
-        else if (CurrentLevel + 1 < MaxLevel)
+        else if (CurrentLevel < MaxLevel)
         {
             CurrentLevel = MaxLevel;
         }
