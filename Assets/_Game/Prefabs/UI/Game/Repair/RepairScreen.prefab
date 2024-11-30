@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25df1c43b4f76b44c8c3fcc99e893979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _progressBarFill: {fileID: 265940191450834912}
+  _progressBarFill: {fileID: 7698643185448937440}
   _plugs:
   - {fileID: 8161310833668227076}
   - {fileID: 6224947410869578849}
@@ -1129,9 +1129,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c227d250af1e5664685fdb36eb602f75, type: 3}
---- !u!114 &265940191450834912 stripped
+--- !u!224 &6987243194106696051 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5130581780230078089, guid: c227d250af1e5664685fdb36eb602f75,
+    type: 3}
+  m_PrefabInstance: {fileID: 2865644339462844410}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7698643185448937440 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2626759022667597850, guid: c227d250af1e5664685fdb36eb602f75,
+  m_CorrespondingSourceObject: {fileID: 5553997617649731610, guid: c227d250af1e5664685fdb36eb602f75,
     type: 3}
   m_PrefabInstance: {fileID: 2865644339462844410}
   m_PrefabAsset: {fileID: 0}
@@ -1141,12 +1147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &6987243194106696051 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5130581780230078089, guid: c227d250af1e5664685fdb36eb602f75,
-    type: 3}
-  m_PrefabInstance: {fileID: 2865644339462844410}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3871349349097922150
 PrefabInstance:
   m_ObjectHideFlags: 0

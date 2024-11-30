@@ -39,6 +39,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
 
     private void OnGameToGame2DLoadDone(SceneLoader.Scenes scenes)
     {
+        TextManager.Instance.ShowText(StringStorageType.Intro);
         SceneLoader.OnSceneLoadDone -= OnGameToGame2DLoadDone;
     }
 
