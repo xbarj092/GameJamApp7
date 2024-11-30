@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f84bec4a9d4092428f078d4824ce73a, type: 3}
   m_Name: DimensionDecreaseStringStorage
   m_EditorClassIdentifier: 
-  <StringStorageType>k__BackingField: 0
+  <StringStorageType>k__BackingField: 3
   <FirstTimeStrings>k__BackingField:
   - Lets shrink the space your are walking in
   <NextTimeStrings>k__BackingField:
