@@ -28,6 +28,14 @@ public class ChooseRepairSection : MonoBehaviour
     {
         foreach (GameEvent gameEvent in EventManager.Instance.ActivePermanentEvents)
         {
+            if (SceneLoadManager.Instance.IsSceneLoaded(SceneLoader.Scenes.GameScene1D))
+            {
+                if (gameEvent.GameEventType == GameEventType.DimensionChangeTo2D)
+                {
+                    continue;
+                }
+            }
+
             RepairSlot slot = Instantiate(_repairSlotPrefab, _spawnTransform);
             slot.Init(gameEvent);
             _repairSlots.Add(slot);
