@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SceneLoadManager : MonoSingleton<SceneLoadManager>
@@ -16,6 +17,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
 
     private void OnBootToMenuLoadDone(SceneLoader.Scenes scene)
     {
+        PlayMenuMusic();
         Time.timeScale = 1;
         SceneLoader.OnSceneLoadDone -= OnBootToMenuLoadDone;
     }
@@ -28,6 +30,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
 
     private void OnMenuToGameLoadDone(SceneLoader.Scenes scenes)
     {
+        PlayGameMusic();
         TextManager.Instance.ShowText(StringStorageType.Intro);
         SceneLoader.OnSceneLoadDone -= OnMenuToGameLoadDone;
     }
@@ -97,6 +100,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
 
     private void OnGameToMenuLoadDone(SceneLoader.Scenes scenes)
     {
+        PlayMenuMusic();
         Time.timeScale = 1;
         SceneLoader.OnSceneLoadDone -= OnGameToMenuLoadDone;
     }
@@ -109,7 +113,34 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
 
     private void OnRestartGameDone(SceneLoader.Scenes scenes)
     {
+        PlayGameMusic();
         SceneLoader.OnSceneLoadDone -= OnRestartGameDone;
+    }
+
+    private void PlayGameMusic()
+    {
+        if (AudioManager.Instance.IsPlaying(SoundType.MenuMusic))
+        {
+            AudioManager.Instance.Stop(SoundType.MenuMusic);
+        }
+
+        if (!AudioManager.Instance.IsPlaying(SoundType.GameMusic))
+        {
+            AudioManager.Instance.Play(SoundType.GameMusic);
+        }
+    }
+
+    private void PlayMenuMusic()
+    {
+        if (AudioManager.Instance.IsPlaying(SoundType.GameMusic))
+        {
+            AudioManager.Instance.Stop(SoundType.GameMusic);
+        }
+
+        if (!AudioManager.Instance.IsPlaying(SoundType.MenuMusic))
+        {
+            AudioManager.Instance.Play(SoundType.MenuMusic);
+        }
     }
 
     public bool IsSceneLoaded(SceneLoader.Scenes sceneToCheck)

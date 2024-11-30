@@ -61,6 +61,8 @@ public class TextFieldShower : MonoBehaviour
     {
         yield return new WaitForSeconds(_delayBeforeStart);
 
+        AudioManager.Instance.Play(SoundType.TextTypeSFX);
+
         foreach (char character in _writer)
         {
             if (!_isTyping)
@@ -72,6 +74,8 @@ public class TextFieldShower : MonoBehaviour
             _tmpProText.text += character;
             yield return new WaitForSeconds(_timeBtwChars);
         }
+
+        AudioManager.Instance.Stop(SoundType.TextTypeSFX);
 
         _isTyping = false;
         _isTextComplete = true;
