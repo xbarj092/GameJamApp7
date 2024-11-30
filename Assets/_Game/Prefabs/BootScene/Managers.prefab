@@ -125,7 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fb7e0c0a80c29438bd87a1de7b9293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentLevel: 0
+  CurrentLevel: 1
+  MaxLevel: 1
   TimeToNextRepair: 0
 --- !u!1 &5231721350433640374
 GameObject:
@@ -309,7 +310,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0395b2387ea27b04e826051035137876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
+  _spacialBlend: 0
+  _mixer: {fileID: 24300002, guid: eecf4d498ff5bcd4599d5743ca19f24e, type: 2}
+  Sounds:
   - name: 1
     clip: {fileID: 8300000, guid: 6e1feecb290402346a8342e29fabe579, type: 3}
     volume: 0.2
@@ -331,8 +334,6 @@ MonoBehaviour:
     SpatialBlend: 0
     NumberOfSource: 1
     source: []
-  SpacialBlend: 0
-  mixer: {fileID: 24300002, guid: eecf4d498ff5bcd4599d5743ca19f24e, type: 2}
   Muted: 0
 --- !u!1 &5704023380190178656
 GameObject:

@@ -82,7 +82,6 @@ MonoBehaviour:
   _virtualCamera: {fileID: 0}
   _rigidbody: {fileID: 3475997270737270281}
   _speed: 10
-  _inputDelay: 0.5
 --- !u!114 &7857317836237923233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +138,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 1
 --- !u!1 &5942308803732783087
 GameObject:
@@ -152,7 +151,7 @@ GameObject:
   - component: {fileID: 2007777273090146504}
   - component: {fileID: 2785853407254331796}
   - component: {fileID: 2048058069000182003}
-  - component: {fileID: 2185044341064666239}
+  - component: {fileID: 3671149371359852827}
   m_Layer: 0
   m_Name: Player_model
   m_TagString: Player
@@ -225,7 +224,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2185044341064666239
+--- !u!136 &3671149371359852827
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
