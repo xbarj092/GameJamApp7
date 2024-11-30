@@ -28,6 +28,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
 
     private void OnMenuToGameLoadDone(SceneLoader.Scenes scenes)
     {
+        TextManager.Instance.ShowText(StringStorageType.Intro);
         SceneLoader.OnSceneLoadDone -= OnMenuToGameLoadDone;
     }
 
@@ -39,6 +40,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
 
     private void OnGameToGame2DLoadDone(SceneLoader.Scenes scenes)
     {
+        TextManager.Instance.ShowText(StringStorageType.DimensionChange);
         SceneLoader.OnSceneLoadDone -= OnGameToGame2DLoadDone;
     }
 
@@ -50,6 +52,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
 
     private void OnGame2DToGame1DLoadDone(SceneLoader.Scenes scenes)
     {
+        TextManager.Instance.ShowText(StringStorageType.DimensionChange);
         SceneLoader.OnSceneLoadDone -= OnGame2DToGame1DLoadDone;
     }
 

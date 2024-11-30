@@ -29,7 +29,7 @@ public class RepairSection : MonoBehaviour
         }
     }
 
-    public void StartRepairing(GameEvent gameEvent)
+    public void StartRepairing()
     {
         SwapPlugChildren();
         StartCoroutine(StartTimeout());

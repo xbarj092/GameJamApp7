@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class EventManager : MonoSingleton<EventManager>
 {
@@ -9,12 +10,22 @@ public class EventManager : MonoSingleton<EventManager>
     [SerializeField] private List<GameEvent> _events1D;
 
     public List<GameEvent> Events;
+    public float InputDelay;
+    public InputActionReference MovementAction;
+    public List<string> CurrentBinding = new();
 
     private List<GameEvent> _activePermanentEvents = new();
     public List<GameEvent> ActivePermanentEvents => _activePermanentEvents;
     private GameEvent _currentEvent;
 
     public event System.Action OnPermanentEventAdded;
+    public event System.Action OnPermanentEventRemoved;
+    public event System.Action<List<string>> OnInputChanged;
+    public void OnInputChangeInvoke(List<string> inputs)
+    {
+        CurrentBinding = inputs;
+        OnInputChanged?.Invoke(inputs);
+    }
 
     private void Awake()
     {
@@ -26,7 +37,8 @@ public class EventManager : MonoSingleton<EventManager>
 
     public void ChooseEvent()
     {
-        List<GameEvent> validEvents = _eventsGeneral;
+        List<GameEvent> validEvents = new(_eventsGeneral);
+        validEvents.RemoveAll(validEvent => _activePermanentEvents.Contains(validEvent));
 
         if (SceneLoadManager.Instance.IsSceneLoaded(SceneLoader.Scenes.GameScene))
         {
@@ -41,13 +53,14 @@ public class EventManager : MonoSingleton<EventManager>
             validEvents.AddRange(_events1D);
         }
 
+
         int randomEventIndex = Random.Range(0, validEvents.Count);
         validEvents[randomEventIndex].ApplyEvent();
         _currentEvent = validEvents[randomEventIndex];
         if (_currentEvent.Permanent)
         {
-            OnPermanentEventAdded?.Invoke();
             _activePermanentEvents.Add(_currentEvent);
+            OnPermanentEventAdded?.Invoke();
         }
     }
 
@@ -62,6 +75,7 @@ public class EventManager : MonoSingleton<EventManager>
         {
             gameEvent.StopEvent();
             _activePermanentEvents.Remove(gameEvent);
+            OnPermanentEventRemoved?.Invoke();
         }
     }
 }

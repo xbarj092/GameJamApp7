@@ -1,16 +1,19 @@
-using System;
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
     [SerializeField] private Image _progressBarFill;
+    [SerializeField] private List<TMP_Text> _keyTexts;
 
     private const float TIME_FOR_REPAIR = 10f;
 
     private void Awake()
     {
+        OnInputChanged(EventManager.Instance.CurrentBinding);
         StartTimeToNextRepair();
     }
 
@@ -18,12 +21,16 @@ public class HUD : MonoBehaviour
     {
         GameManager.Instance.OnRepairTimerReset += StartTimeToNextRepair;
         EventManager.Instance.OnPermanentEventAdded += StartTimeToNextRepair;
+        EventManager.Instance.OnPermanentEventRemoved += StopAllCoroutines;
+        EventManager.Instance.OnInputChanged += OnInputChanged;
     }
 
     private void OnDisable()
     {
         GameManager.Instance.OnRepairTimerReset -= StartTimeToNextRepair;
         EventManager.Instance.OnPermanentEventAdded -= StartTimeToNextRepair;
+        EventManager.Instance.OnPermanentEventRemoved -= StopAllCoroutines;
+        EventManager.Instance.OnInputChanged -= OnInputChanged;
 
         StopAllCoroutines();
     }
@@ -55,5 +62,13 @@ public class HUD : MonoBehaviour
     private void OnRepairCompletedInvoke()
     {
         ScreenEvents.OnGameScreenOpenedInvoke(GameScreenType.Repair);
+    }
+
+    private void OnInputChanged(List<string> list)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            _keyTexts[i].text = list[i];
+        }
     }
 }

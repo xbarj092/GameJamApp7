@@ -8,4 +8,9 @@ public class ScreenManager : MonoSingleton<ScreenManager>
     {
         ActiveGameScreen = screen;
     }
+
+    public Transform GetActiveCanvasTransform()
+    {
+        return FindFirstObjectByType<Canvas>().transform;
+    }
 }

@@ -191,6 +191,11 @@ PrefabInstance:
       propertyPath: virtualCamera
       value: 
       objectReference: {fileID: 1971228062}
+    - target: {fileID: 8192525382820382501, guid: bc9c40e67435f7049b1b63f2fcd5843e,
+        type: 3}
+      propertyPath: _virtualCamera
+      value: 
+      objectReference: {fileID: 1971228062}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8346623590847642739, guid: bc9c40e67435f7049b1b63f2fcd5843e, type: 3}
