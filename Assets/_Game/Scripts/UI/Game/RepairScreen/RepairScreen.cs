@@ -9,6 +9,7 @@ public class RepairScreen : GameScreen
 
     private void OnEnable()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         _chooseRepairSection.OnRepairChosen += OnRepairChosen;
         _repairSection.OnRepairComplete += OnRepairComplete;
     }
@@ -36,6 +37,7 @@ public class RepairScreen : GameScreen
             EventManager.Instance.StopPermanentEvent(_chosenGameEvent);
         }
 
+        Cursor.lockState = CursorLockMode.Locked;
         CloseScreen();
     }
 }
