@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,11 +17,13 @@ public class HUD : MonoBehaviour
     private void OnEnable()
     {
         GameManager.Instance.OnRepairTimerReset += StartTimeToNextRepair;
+        EventManager.Instance.OnPermanentEventAdded += StartTimeToNextRepair;
     }
 
     private void OnDisable()
     {
         GameManager.Instance.OnRepairTimerReset -= StartTimeToNextRepair;
+        EventManager.Instance.OnPermanentEventAdded -= StartTimeToNextRepair;
 
         StopAllCoroutines();
     }
@@ -32,6 +35,11 @@ public class HUD : MonoBehaviour
 
     private IEnumerator StartTimeout()
     {
+        if (EventManager.Instance.ActivePermanentEvents.Count == 0)
+        {
+            yield break;
+        }
+
         while (GameManager.Instance.TimeToNextRepair < TIME_FOR_REPAIR)
         {
             GameManager.Instance.TimeToNextRepair += Time.deltaTime;
