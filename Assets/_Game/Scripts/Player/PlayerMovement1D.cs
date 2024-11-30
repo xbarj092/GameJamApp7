@@ -31,7 +31,7 @@ public class PlayerMovement1D : MonoBehaviour
         Vector3 pointToTarget = targetPosition - pointA.position;
         float projection = Vector3.Dot(pointToTarget, lineDirection);
         targetPosition = pointA.position + lineDirection * projection;
-
-        transform.position = targetPosition;
+        targetPosition.x = Mathf.Clamp(targetPosition.x, pointA.position.x, pointB.position.x);
+        transform.position = new Vector3(targetPosition.x,0,0);
     }
 }
