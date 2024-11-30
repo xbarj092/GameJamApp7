@@ -8,12 +8,14 @@ using static UnityEngine.InputSystem.InputActionRebindingExtensions;
 public class InputChangeEventStrategy : IEventStrategy
 {
     private RebindingOperation _rebindingOperation;
+    private List<string> _usedKeys = new();
 
     private readonly string[] _directions = { "up", "down", "left", "right" };
     private readonly string[] _wasdKeys = { "w", "s", "a", "d" };
 
     public void ApplyEvent()
     {
+        _usedKeys.Clear();
         InputAction action = EventManager.Instance.MovementAction.action;
         List<string> keys = new();
 
@@ -32,6 +34,7 @@ public class InputChangeEventStrategy : IEventStrategy
                 action.Enable();
             }
 
+            _usedKeys.Add(randomKey);
             keys.Add(randomKey);
             action.ApplyBindingOverride(bindingIndex, $"<Keyboard>/{randomKey}");
         }
@@ -59,7 +62,7 @@ public class InputChangeEventStrategy : IEventStrategy
         foreach (KeyControl key in keys)
         {
             string keyName = key.name;
-            if (IsAlphabeticKey(keyName) || IsNumericKey(keyName))
+            if (IsAlphabeticKey(keyName) || IsNumericKey(keyName) && !_usedKeys.Contains(keyName))
             {
                 validKeys.Add(keyName);
             }
@@ -81,7 +84,8 @@ public class InputChangeEventStrategy : IEventStrategy
 
     public void StopEvent()
     {
-        List<string> keys = new();
+        List<string> keys = new(); 
+        _usedKeys.Clear();
         InputAction action = EventManager.Instance.MovementAction.action;
 
         for (int i = 0; i < _directions.Length; i++)
@@ -97,6 +101,7 @@ public class InputChangeEventStrategy : IEventStrategy
                 action.Enable();
             }
 
+            _usedKeys.Add(_wasdKeys[i]);
             keys.Add(_wasdKeys[i]);
             action.ApplyBindingOverride(bindingIndex, $"<Keyboard>/{_wasdKeys[i]}");
         }

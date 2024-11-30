@@ -4,37 +4,37 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoSingleton<AudioManager>
 {
-    public Sound[] sounds;
-    [SerializeField] private bool SpacialBlend;
-    [SerializeField] private AudioMixerGroup mixer;
+    [SerializeField] private bool _spacialBlend;
+    [SerializeField] private AudioMixerGroup _mixer;
 
+    public Sound[] Sounds;
     public bool Muted = false;
 
     public void Awake()
     {
-        foreach (Sound s in sounds)
+        foreach (Sound sound in Sounds)
         {
-            for (int i = 0; i < s.NumberOfSource; i++)
+            for (int i = 0; i < sound.NumberOfSource; i++)
             {
                 AudioSource source = gameObject.AddComponent<AudioSource>();
                 source.playOnAwake = false;
-                source.loop = s.name == SoundType.GameMusic || s.name == SoundType.MenuMusic;
-                source.clip = s.clip;
-                source.volume = s.volume;
-                source.pitch = s.pitch;
-                source.spatialBlend = s.SpatialBlend;
-                source.outputAudioMixerGroup = mixer;
-                s.source.Add(source);
+                source.loop = sound.name == SoundType.GameMusic || sound.name == SoundType.MenuMusic;
+                source.clip = sound.clip;
+                source.volume = sound.volume;
+                source.pitch = sound.pitch;
+                source.spatialBlend = sound.SpatialBlend;
+                source.outputAudioMixerGroup = _mixer;
+                sound.source.Add(source);
             }
         }
     }
 
     public void Play(SoundType name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound sound = Array.Find(Sounds, sound => sound.name == name);
         bool find = false;
 
-        AudioSource foundSource = s.source.Find((source) => 
+        AudioSource foundSource = sound.source.Find((source) => 
         {
             find = !source.isPlaying;
             return find;
@@ -46,20 +46,20 @@ public class AudioManager : MonoSingleton<AudioManager>
         }
         else
         {
-            s.source[0].Play();
+            sound.source[0].Play();
         }
     }
 
     public void Stop(SoundType name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.ForEach((source) => source.Stop());
+        Sound sound = Array.Find(Sounds, sound => sound.name == name);
+        sound.source.ForEach((source) => source.Stop());
     }
 
     public bool IsPlaying(SoundType name)
     { 
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        return s.source.Exists((source) => source.isPlaying);
+        Sound sound = Array.Find(Sounds, sound => sound.name == name);
+        return sound.source.Exists((source) => source.isPlaying);
     }
 
     public void SetVolume(bool mute)
