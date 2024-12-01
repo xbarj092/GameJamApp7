@@ -61,7 +61,7 @@ public class NextLevel : MonoBehaviour
                 GameManager.Instance.DecreaseLevel();
             }
 
-            SwitchModels(GameManager.Instance.CurrentLevel == 5);
+            SwitchModels(GameManager.Instance.CurrentLevel >= 5);
             _isPlayerInTrigger = false;
             _increasedLevel = false;
         }

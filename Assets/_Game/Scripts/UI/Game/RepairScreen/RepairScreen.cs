@@ -9,6 +9,8 @@ public class RepairScreen : GameScreen
 
     private void OnEnable()
     {
+        TextManager.Instance.DestroyOldText();
+
         _chooseRepairSection.OnRepairChosen += OnRepairChosen;
         _repairSection.OnRepairComplete += OnRepairComplete;
     }
