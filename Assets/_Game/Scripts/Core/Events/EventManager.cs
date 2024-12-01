@@ -67,6 +67,10 @@ public class EventManager : MonoSingleton<EventManager>
             validEvents.AddRange(_events1D);
         }
 
+        if (validEvents.Count <= 0)
+        {
+            return;
+        }
 
         int randomEventIndex = Random.Range(0, validEvents.Count);
         validEvents[randomEventIndex].ApplyEvent();

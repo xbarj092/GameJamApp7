@@ -55,6 +55,7 @@ public class HUD : MonoBehaviour
 
     private IEnumerator StartTimeout()
     {
+        yield return new WaitUntil(() => TextManager.Instance.CurrentText == null);
         if (EventManager.Instance.ActivePermanentEvents.Count == 0)
         {
             yield break;
