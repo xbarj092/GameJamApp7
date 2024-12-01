@@ -6,6 +6,7 @@ public enum GameEventType
     LanguageChange = 1,
     InputChange = 2,
     InputDelay = 3,
+    TimedLevel = 7,
 
     // in 1D
     DimensionChangeTo0D = 4,

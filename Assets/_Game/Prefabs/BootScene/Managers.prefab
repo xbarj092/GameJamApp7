@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 37743862471369129}
   - component: {fileID: 2830093545140301643}
   - component: {fileID: 3292573721347566598}
+  - component: {fileID: 2050857803699240253}
   m_Layer: 0
   m_Name: EventManager
   m_TagString: Untagged
@@ -178,8 +179,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eventsGeneral:
-  - {fileID: 2830093545140301643}
+  - {fileID: 2050857803699240253}
   - {fileID: 3292573721347566598}
+  - {fileID: 2830093545140301643}
   _events3D:
   - {fileID: 37743862471369129}
   _events2D:
@@ -266,6 +268,21 @@ MonoBehaviour:
   GameEventType: 2
   Permanent: 1
   Sprite: {fileID: 21300000, guid: e4089356656a8b442a1c1966c8e1665f, type: 3}
+--- !u!114 &2050857803699240253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231721350433640374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7c7aff0e6612b49a38d007f7c87732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEventType: 7
+  Permanent: 0
+  Sprite: {fileID: 0}
 --- !u!1 &5471180583576664098
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,6 +406,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c0738ae1510ae2147bbb60e809627ccd, type: 2}
   - {fileID: 11400000, guid: c795389a8a6234a4cae43100688f7f81, type: 2}
   - {fileID: 11400000, guid: 4ae29712927920349a156e8982b44305, type: 2}
+  - {fileID: 11400000, guid: 585fe66cbf204804da45e16825f0b4aa, type: 2}
   CurrentText: {fileID: 0}
 --- !u!1 &7531105811605514934
 GameObject:

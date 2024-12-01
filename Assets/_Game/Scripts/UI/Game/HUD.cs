@@ -8,6 +8,7 @@ public class HUD : MonoBehaviour
 {
     [SerializeField] private Image _progressBarFill;
     [SerializeField] private List<TMP_Text> _keyTexts;
+    [SerializeField] private TMP_Text _timeText;
 
     private const float TIME_FOR_REPAIR = 10f;
 
@@ -20,17 +21,21 @@ public class HUD : MonoBehaviour
     private void OnEnable()
     {
         GameManager.Instance.OnRepairTimerReset += StartTimeToNextRepair;
+        GameManager.Instance.OnLevelChanged += OnLevelChanged;
         EventManager.Instance.OnPermanentEventAdded += StartTimeToNextRepair;
         EventManager.Instance.OnPermanentEventRemoved += StopAllCoroutines;
         EventManager.Instance.OnInputChanged += OnInputChanged;
+        EventManager.Instance.OnTimeToLevelDisintegrationChanged += OnTimeToDisintegrateChanged;
     }
 
     private void OnDisable()
     {
         GameManager.Instance.OnRepairTimerReset -= StartTimeToNextRepair;
+        GameManager.Instance.OnLevelChanged -= OnLevelChanged;
         EventManager.Instance.OnPermanentEventAdded -= StartTimeToNextRepair;
         EventManager.Instance.OnPermanentEventRemoved -= StopAllCoroutines;
         EventManager.Instance.OnInputChanged -= OnInputChanged;
+        EventManager.Instance.OnTimeToLevelDisintegrationChanged -= OnTimeToDisintegrateChanged;
 
         StopAllCoroutines();
     }
@@ -70,5 +75,20 @@ public class HUD : MonoBehaviour
         {
             _keyTexts[i].text = list[i];
         }
+    }
+
+    private void OnTimeToDisintegrateChanged(float secondsLeft)
+    {
+        if (!_timeText.isActiveAndEnabled)
+        {
+            _timeText.gameObject.SetActive(true);
+        }
+
+        _timeText.text = Mathf.CeilToInt(secondsLeft).ToString() + "s";
+    }
+
+    private void OnLevelChanged()
+    {
+        _timeText.gameObject.SetActive(false);
     }
 }

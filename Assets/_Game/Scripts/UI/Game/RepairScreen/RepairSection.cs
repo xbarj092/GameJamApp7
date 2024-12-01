@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,9 @@ public class RepairSection : MonoBehaviour
 {
     [SerializeField] private Image _progressBarFill;
     [SerializeField] private List<Plug> _plugs;
+    [SerializeField] private TMP_Text _hackedText;
+
+    private bool _toggledOn = false;
 
     public event Action<bool> OnRepairComplete;
 
@@ -33,6 +37,13 @@ public class RepairSection : MonoBehaviour
     {
         SwapPlugChildren();
         StartCoroutine(StartTimeout());
+        InvokeRepeating(nameof(HackedTextToggle), 0, 1);
+    }
+
+    private void HackedTextToggle()
+    {
+        _hackedText.gameObject.SetActive(!_toggledOn);
+        _toggledOn = !_toggledOn;
     }
 
     private IEnumerator StartTimeout()

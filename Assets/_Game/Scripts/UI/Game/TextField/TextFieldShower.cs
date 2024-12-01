@@ -3,7 +3,6 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using System;
 
 public class TextFieldShower : MonoBehaviour
 {
