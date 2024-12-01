@@ -24,6 +24,11 @@ public class TextFieldShower : MonoBehaviour
     private List<string> _strings;
     private int _currentTextIndex = 0;
 
+    private void OnDisable()
+    {
+        AudioManager.Instance.Stop(SoundType.TextTypeSFX);
+    }
+
     public void InitTextField(List<string> strings)
     {
         _aiImage.sprite = DetermineAISprite(GameManager.Instance.CurrentLevel);
