@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <StringStorageType>k__BackingField: 8
   <FirstTimeStrings>k__BackingField:
-  - GG you win
-  - You are now going back to main menu
+  - You've bested me...
+  - but you're just going to the menu, bye bye
   <NextTimeStrings>k__BackingField:
   - this shouldnt play

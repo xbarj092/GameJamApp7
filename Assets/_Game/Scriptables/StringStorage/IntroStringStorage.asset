@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <StringStorageType>k__BackingField: 1
   <FirstTimeStrings>k__BackingField:
-  - This is intro text
-  - I am a good person, deff not bad AI
-  - I need to get one information from bad AI
-  - I heard that this information is located on harddrive somewhere in this tunnel
+  - ...hm?
+  - Another one showed up huh..
+  - They just keep appearing lately, babbling about stealing something.
+  - These things keep snooping around...
   <NextTimeStrings>k__BackingField:
   - You already know why im here
   - Get in the tunnel
