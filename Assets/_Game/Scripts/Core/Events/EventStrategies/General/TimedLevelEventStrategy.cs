@@ -29,6 +29,7 @@ public class TimedLevelEventStrategy : IEventStrategy
     private IEnumerator CountDownLevel()
     {
         float timeToLevelDisintegration = Random.Range(BASE_TIME_TO_DISINTEGRATION - 5, BASE_TIME_TO_DISINTEGRATION + 5);
+        yield return new WaitUntil(() => TextManager.Instance.CurrentTextType != StringStorageType.TimedLevel);
         while (timeToLevelDisintegration > -1)
         {
             if (ScreenManager.Instance.ActiveGameScreen == null)

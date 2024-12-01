@@ -30,7 +30,7 @@ public class GameManager : MonoSingleton<GameManager>
         {
             MaxLevel = CurrentLevel;
             OnLevelChanged?.Invoke();
-            if (MaxLevel < 5)
+            if (MaxLevel < 5 || SceneLoadManager.Instance.IsSceneLoaded(SceneLoader.Scenes.GameScene1D))
             {
                 EventManager.Instance.ChooseEvent();
             }
