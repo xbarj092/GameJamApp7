@@ -42,6 +42,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            if (_noise != null)
+            {
+                _noise.m_NoiseProfile = _standingNoise;
+            }
+
             _rigidbody.velocity = Vector3.zero;
         }
     }
@@ -89,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 _noise.m_NoiseProfile = _standingNoise;
             }
+
             return;
         }
 
