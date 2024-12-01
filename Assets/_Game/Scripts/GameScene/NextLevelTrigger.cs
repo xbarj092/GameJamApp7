@@ -7,6 +7,7 @@ public class NextLevel : MonoBehaviour
 
     [SerializeField] private GameObject _torusGroundEnd;
     [SerializeField] private GameObject _torusWallEnd;
+    [SerializeField] private GameObject _enemyOrb;
 
     private Vector3 _lastPosition;
     private bool _isPlayerInTrigger = false;
@@ -72,5 +73,6 @@ public class NextLevel : MonoBehaviour
         _torusWallBase.SetActive(!end);
         _torusGroundEnd.SetActive(end);
         _torusWallEnd.SetActive(end);
+        _enemyOrb.SetActive(end);
     }
 }

@@ -145,9 +145,9 @@ GameObject:
   - component: {fileID: 8790614171503821409}
   - component: {fileID: 8146172481369793117}
   - component: {fileID: 3071667342738578707}
-  - component: {fileID: 5610436023426476091}
+  - component: {fileID: -8623173989552424120}
   m_Layer: 5
-  m_Name: TextFieldDeath
+  m_Name: TextFieldBackToMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5610436023426476091
+--- !u!114 &-8623173989552424120
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2159711123195537650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b523a2227866514f82fd3f5820e32eb, type: 3}
+  m_Script: {fileID: 11500000, guid: e17c1be93363194438e829afd20b6d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _aiImage: {fileID: 8181238056821507499}

@@ -5,4 +5,5 @@ public enum GameScreenType
     Death = 2,
     Pause = 3,
     Repair = 4,
+    Win = 5,
 }
