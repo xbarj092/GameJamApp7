@@ -125,21 +125,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6985482685368901206}
     m_Modifications:
-    - target: {fileID: 1022806115651630026, guid: 147b227dd4ce9b7468b15543cc897f71,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022806115651630026, guid: 147b227dd4ce9b7468b15543cc897f71,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022806115651630026, guid: 147b227dd4ce9b7468b15543cc897f71,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -100
-      objectReference: {fileID: 0}
     - target: {fileID: 1608333907330513357, guid: 147b227dd4ce9b7468b15543cc897f71,
         type: 3}
       propertyPath: m_Pivot.x
@@ -178,7 +163,7 @@ PrefabInstance:
     - target: {fileID: 1608333907330513357, guid: 147b227dd4ce9b7468b15543cc897f71,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 910.7801
+      value: 0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 1608333907330513357, guid: 147b227dd4ce9b7468b15543cc897f71,
         type: 3}
@@ -223,7 +208,7 @@ PrefabInstance:
     - target: {fileID: 1608333907330513357, guid: 147b227dd4ce9b7468b15543cc897f71,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -455.38998
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1608333907330513357, guid: 147b227dd4ce9b7468b15543cc897f71,
         type: 3}
@@ -239,26 +224,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2586807204923262375, guid: 147b227dd4ce9b7468b15543cc897f71,
-        type: 3}
-      propertyPath: m_fontColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2586807204923262375, guid: 147b227dd4ce9b7468b15543cc897f71,
-        type: 3}
-      propertyPath: m_fontColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2586807204923262375, guid: 147b227dd4ce9b7468b15543cc897f71,
-        type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2586807204923262375, guid: 147b227dd4ce9b7468b15543cc897f71,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6244696326479365019, guid: 147b227dd4ce9b7468b15543cc897f71,
         type: 3}

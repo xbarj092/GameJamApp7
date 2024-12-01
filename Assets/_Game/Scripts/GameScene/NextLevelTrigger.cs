@@ -54,14 +54,13 @@ public class NextLevel : MonoBehaviour
             if (_increasedLevel)
             {
                 GameManager.Instance.IncreaseLevel();
-                SwitchModels(GameManager.Instance.CurrentLevel == 5);
             }
             else
             {
                 GameManager.Instance.DecreaseLevel();
-                SwitchModels(GameManager.Instance.CurrentLevel == 5);
             }
 
+            SwitchModels(GameManager.Instance.CurrentLevel == 5);
             _isPlayerInTrigger = false;
             _increasedLevel = false;
         }
@@ -69,7 +68,6 @@ public class NextLevel : MonoBehaviour
 
     private void SwitchModels(bool end)
     {
-        Debug.Log("Switching models - " + end);
         _torusGroundBase.SetActive(!end);
         _torusWallBase.SetActive(!end);
         _torusGroundEnd.SetActive(end);

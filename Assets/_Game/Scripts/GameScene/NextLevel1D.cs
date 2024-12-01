@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class NextLevel1D : MonoBehaviour
 {
+    [SerializeField] private GameObject _lineNormal;
+    [SerializeField] private GameObject _lineEnd;
+
     [SerializeField] private Transform _start;
     [SerializeField] private bool _next;
 
@@ -18,6 +21,14 @@ public class NextLevel1D : MonoBehaviour
             {
                 GameManager.Instance.DecreaseLevel();
             }
+
+            // SwitchModels(GameManager.Instance.CurrentLevel == 5);
         }
+    }
+
+    private void SwitchModels(bool end)
+    {
+        _lineNormal.SetActive(!end);
+        _lineEnd.SetActive(end);
     }
 }
