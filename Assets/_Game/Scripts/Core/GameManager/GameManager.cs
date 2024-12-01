@@ -17,6 +17,12 @@ public class GameManager : MonoSingleton<GameManager>
         OnRepairTimerReset?.Invoke();
     }
 
+    public event Action<StringStorageType> OnTutorialFinished;
+    public void OnTutorialFinishedInvoke(StringStorageType storageType)
+    {
+        OnTutorialFinished?.Invoke(storageType);
+    }
+
     public void IncreaseLevel()
     {
         CurrentLevel++;

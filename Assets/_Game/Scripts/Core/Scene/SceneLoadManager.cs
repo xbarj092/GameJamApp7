@@ -1,3 +1,5 @@
+using System;
+
 public class SceneLoadManager : MonoSingleton<SceneLoadManager>
 {
     protected override void Init()
@@ -34,7 +36,8 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     private void OnMenuToGameLoadDone(SceneLoader.Scenes scenes)
     {
         PlayGameMusic();
-        TextManager.Instance.ShowText(StringStorageType.Intro);
+        TextManager.Instance.ShowText(StringStorageType.IntroGood, true);
+        TextManager.Instance.CurrentText.OnTextFinished += OnTextFinished;
         SceneLoader.OnSceneLoadDone -= OnMenuToGameLoadDone;
     }
 
@@ -123,7 +126,8 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     private void OnRestartGameDone(SceneLoader.Scenes scenes)
     {
         PlayGameMusic();
-        TextManager.Instance.ShowText(StringStorageType.Intro);
+        TextManager.Instance.ShowText(StringStorageType.IntroGood, true);
+        TextManager.Instance.CurrentText.OnTextFinished += OnTextFinished;
         SceneLoader.OnSceneLoadDone -= OnRestartGameDone;
     }
 
@@ -151,6 +155,12 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
         {
             AudioManager.Instance.Play(SoundType.MenuMusic);
         }
+    }
+
+    private void OnTextFinished()
+    {
+        TextManager.Instance.CurrentText.OnTextFinished -= OnTextFinished;
+        TextManager.Instance.ShowText(StringStorageType.Intro);
     }
 
     public bool IsSceneLoaded(SceneLoader.Scenes sceneToCheck)

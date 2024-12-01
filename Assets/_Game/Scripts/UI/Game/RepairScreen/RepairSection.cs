@@ -35,6 +35,20 @@ public class RepairSection : MonoBehaviour
     public void StartRepairing()
     {
         SwapPlugChildren();
+
+        if (!TextManager.Instance.HasPlayedTutorial(StringStorageType.Minigame))
+        {
+            TextManager.Instance.ShowText(StringStorageType.Minigame, true);
+            TextManager.Instance.CurrentText.OnTextFinished += OnTextFinished;
+            return;
+        }
+
+        StartCoroutine(StartTimeout());
+    }
+
+    private void OnTextFinished()
+    {
+        TextManager.Instance.CurrentText.OnTextFinished -= OnTextFinished;
         StartCoroutine(StartTimeout());
     }
 

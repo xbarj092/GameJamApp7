@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5,37 +7,43 @@ using UnityEngine;
 public class TextManager : MonoSingleton<TextManager>
 {
     [SerializeField] private TextFieldShower _textFieldPrefab;
-    [SerializeField] private TextFieldShower _textFieldDeathPrefab;
-    [SerializeField] private TextFieldShower _textFieldWinPrefab;
-    [SerializeField] private TextFieldShower _textFieldMenuPrefab;
+    [SerializeField] private TextFieldShower _textFieldPrefabGood;
 
     [SerializeField] private List<StringStorage> _stringStorage;
-    
+
     private List<StringStorage> _playedStrings = new();
+    private Queue<(StringStorageType, bool)> _textQueue = new();
+    private bool _isShowingText = false;
 
     public TextFieldShower CurrentText;
 
-    public void ShowText(StringStorageType stringStorageType, bool death = false, bool win = false, bool backToMenu = false)
+    public void ShowText(StringStorageType stringStorageType, bool good = false)
     {
-        DestroyOldText();
+        _textQueue.Enqueue((stringStorageType, good));
 
-        TextFieldShower textField = _textFieldPrefab;
-        if (death)
+        if (!_isShowingText)
         {
-            textField = _textFieldDeathPrefab;
+            ProcessNextText();
         }
-        else if (win)
+    }
+
+    private void ProcessNextText()
+    {
+        if (_textQueue.Count == 0)
         {
-            textField = _textFieldWinPrefab;
-        }
-        else if (backToMenu)
-        {
-            textField = _textFieldMenuPrefab;
+            _isShowingText = false;
+            return;
         }
 
-        CurrentText = Instantiate(textField, ScreenManager.Instance.GetActiveCanvasTransform());
+        _isShowingText = true;
+
+        (StringStorageType stringStorageType, bool good) = _textQueue.Dequeue();
+
+        CurrentText = Instantiate(good ? _textFieldPrefabGood : _textFieldPrefab, ScreenManager.Instance.GetActiveCanvasTransform());
         StringStorage relevantStringStorage = _stringStorage.First(storage => storage.StringStorageType == stringStorageType);
         CurrentText.InitTextField(!_playedStrings.Contains(relevantStringStorage) ? relevantStringStorage.FirstTimeStrings : relevantStringStorage.NextTimeStrings);
+
+        CurrentText.OnTextFinished += HandleTextFinished;
 
         if (!_playedStrings.Contains(relevantStringStorage))
         {
@@ -43,18 +51,38 @@ public class TextManager : MonoSingleton<TextManager>
         }
     }
 
-    public void DestroyOldText()
+    private void HandleTextFinished()
     {
+        StartCoroutine(HandleTextFinishedRoutine());
+    }
+
+    private IEnumerator HandleTextFinishedRoutine()
+    {
+        yield return StartCoroutine(DestroyOldText());
+        ProcessNextText();
+    }
+
+    public IEnumerator DestroyOldText()
+    {
+        yield return null;
         if (CurrentText != null)
         {
-            Destroy(CurrentText.gameObject);
+            CurrentText.OnTextFinished -= HandleTextFinished;
+            Destroy(CurrentText.gameObject, 0.01f);
             CurrentText = null;
         }
     }
 
+    public bool HasPlayedTutorial(StringStorageType stringStorageType)
+    {
+        return _playedStrings.Any(storage => storage.StringStorageType == stringStorageType);
+    }
+
     public void ResetScript()
     {
-        CurrentText = null;
+        DestroyOldText();
         _playedStrings = new();
+        _textQueue.Clear();
+        _isShowingText = false;
     }
 }
