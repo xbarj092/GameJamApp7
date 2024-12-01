@@ -28,9 +28,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        RotatePlayerWithCamera();
-        BufferCurrentInput();
-        ProcessBufferedInput();
+        if (ScreenManager.Instance.ActiveGameScreen == null)
+        {
+            RotatePlayerWithCamera();
+            BufferCurrentInput();
+            ProcessBufferedInput();
+        }
+        else
+        {
+            _rigidbody.velocity = Vector3.zero;
+        }
     }
 
     private void BufferCurrentInput()

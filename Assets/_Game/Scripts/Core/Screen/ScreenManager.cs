@@ -13,4 +13,9 @@ public class ScreenManager : MonoSingleton<ScreenManager>
     {
         return FindFirstObjectByType<Canvas>().transform;
     }
+
+    public void ResetScript()
+    {
+        ActiveGameScreen = null;
+    }
 }
