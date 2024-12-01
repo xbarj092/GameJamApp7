@@ -6,4 +6,5 @@ public enum StringStorageType
     DimensionChange = 3,
     InputChange = 4,
     ZeroDimension = 5,
+    TimedLevel = 6,
 }

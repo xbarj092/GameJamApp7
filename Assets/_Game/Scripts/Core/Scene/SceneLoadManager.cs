@@ -25,6 +25,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     public void GoMenuToGame()
     {
         EventManager.Instance.ResetScript();
+        AudioManager.Instance.StopAllSounds();
         GameManager.Instance.ResetScript();
         ScreenManager.Instance.ResetScript();
         TextManager.Instance.ResetScript();
@@ -112,6 +113,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     public void RestartGame()
     {
         EventManager.Instance.ResetScript();
+        AudioManager.Instance.StopAllSounds();
         GameManager.Instance.ResetScript();
         ScreenManager.Instance.ResetScript();
         TextManager.Instance.ResetScript();

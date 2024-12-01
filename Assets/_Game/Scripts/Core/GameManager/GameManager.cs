@@ -8,6 +8,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public float TimeToNextRepair;
 
+    public event Action OnLevelChanged;
     public event Action OnRepairTimerReset;
     public void OnRepairTimerResetInvoke()
     {
@@ -20,6 +21,7 @@ public class GameManager : MonoSingleton<GameManager>
         if (CurrentLevel > MaxLevel)
         {
             CurrentLevel = MaxLevel;
+            OnLevelChanged?.Invoke();
             EventManager.Instance.ChooseEvent();
         }
         else if (CurrentLevel < MaxLevel)
