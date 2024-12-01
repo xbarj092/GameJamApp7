@@ -5,6 +5,7 @@ public class GameCanvasController : BaseCanvasController
     [SerializeField] private DeathScreen _deathScreenPrefab;
     [SerializeField] private PauseScreen _pauseScreenPrefab;
     [SerializeField] private RepairScreen _repairScreenPrefab;
+    [SerializeField] private WinScreen _winScreenPrefab;
 
     private void Update()
     {
@@ -30,6 +31,7 @@ public class GameCanvasController : BaseCanvasController
             GameScreenType.Death => Instantiate(_deathScreenPrefab, transform),
             GameScreenType.Pause => Instantiate(_pauseScreenPrefab, transform),
             GameScreenType.Repair => Instantiate(_repairScreenPrefab, transform),
+            GameScreenType.Win => Instantiate(_winScreenPrefab, transform),
             _ => base.GetRelevantScreen(gameScreenType),
         };
     }

@@ -5,16 +5,33 @@ using UnityEngine;
 public class TextManager : MonoSingleton<TextManager>
 {
     [SerializeField] private TextFieldShower _textFieldPrefab;
-    [SerializeField] private TextFieldGameEnd _textFieldDeathPrefab;
+    [SerializeField] private TextFieldShower _textFieldDeathPrefab;
+    [SerializeField] private TextFieldShower _textFieldWinPrefab;
+    [SerializeField] private TextFieldShower _textFieldMenuPrefab;
+
     [SerializeField] private List<StringStorage> _stringStorage;
     
     private List<StringStorage> _playedStrings = new();
 
     public TextFieldShower CurrentText;
 
-    public void ShowText(StringStorageType stringStorageType, bool death = false)
+    public void ShowText(StringStorageType stringStorageType, bool death = false, bool win = false, bool backToMenu = false)
     {
-        CurrentText = Instantiate(death ? _textFieldDeathPrefab : _textFieldPrefab, ScreenManager.Instance.GetActiveCanvasTransform());
+        TextFieldShower textField = _textFieldPrefab;
+        if (death)
+        {
+            textField = _textFieldDeathPrefab;
+        }
+        else if (win)
+        {
+            textField = _textFieldWinPrefab;
+        }
+        else if (backToMenu)
+        {
+            textField = _textFieldMenuPrefab;
+        }
+
+        CurrentText = Instantiate(textField, ScreenManager.Instance.GetActiveCanvasTransform());
         StringStorage relevantStringStorage = _stringStorage.First(storage => storage.StringStorageType == stringStorageType);
         CurrentText.InitTextField(!_playedStrings.Contains(relevantStringStorage) ? relevantStringStorage.FirstTimeStrings : relevantStringStorage.NextTimeStrings);
 

@@ -7,4 +7,6 @@ public enum StringStorageType
     InputChange = 4,
     ZeroDimension = 5,
     TimedLevel = 6,
+    End = 7,
+    PostWin = 8,
 }
