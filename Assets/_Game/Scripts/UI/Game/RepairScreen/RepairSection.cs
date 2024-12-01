@@ -9,7 +9,6 @@ public class RepairSection : MonoBehaviour
 {
     [SerializeField] private Image _progressBarFill;
     [SerializeField] private List<Plug> _plugs;
-    [SerializeField] private TMP_Text _hackedText;
 
     private bool _toggledOn = false;
 
@@ -37,13 +36,6 @@ public class RepairSection : MonoBehaviour
     {
         SwapPlugChildren();
         StartCoroutine(StartTimeout());
-        InvokeRepeating(nameof(HackedTextToggle), 0, 1);
-    }
-
-    private void HackedTextToggle()
-    {
-        _hackedText.gameObject.SetActive(!_toggledOn);
-        _toggledOn = !_toggledOn;
     }
 
     private IEnumerator StartTimeout()

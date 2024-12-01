@@ -17,6 +17,8 @@ public class TextManager : MonoSingleton<TextManager>
 
     public void ShowText(StringStorageType stringStorageType, bool death = false, bool win = false, bool backToMenu = false)
     {
+        DestroyOldText();
+
         TextFieldShower textField = _textFieldPrefab;
         if (death)
         {
@@ -38,6 +40,15 @@ public class TextManager : MonoSingleton<TextManager>
         if (!_playedStrings.Contains(relevantStringStorage))
         {
             _playedStrings.Add(relevantStringStorage);
+        }
+    }
+
+    public void DestroyOldText()
+    {
+        if (CurrentText != null)
+        {
+            Destroy(CurrentText.gameObject);
+            CurrentText = null;
         }
     }
 

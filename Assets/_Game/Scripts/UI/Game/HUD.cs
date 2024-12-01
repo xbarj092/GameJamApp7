@@ -10,7 +10,8 @@ public class HUD : MonoBehaviour
     [SerializeField] private List<TMP_Text> _keyTexts;
     [SerializeField] private TMP_Text _timeText;
 
-    private const float TIME_FOR_REPAIR = 10f;
+    private const float TIME_FOR_REPAIR = 100f;
+    private const string DISINTEGRATION_TIME = "Time to disintegration: ";
 
     private void Awake()
     {
@@ -84,7 +85,7 @@ public class HUD : MonoBehaviour
             _timeText.gameObject.SetActive(true);
         }
 
-        _timeText.text = Mathf.CeilToInt(secondsLeft).ToString() + "s";
+        _timeText.text = DISINTEGRATION_TIME + Mathf.CeilToInt(secondsLeft).ToString() + "s";
     }
 
     private void OnLevelChanged()
