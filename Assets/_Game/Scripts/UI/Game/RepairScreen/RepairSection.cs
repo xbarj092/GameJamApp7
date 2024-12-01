@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +13,7 @@ public class RepairSection : MonoBehaviour
 
     public event Action<bool> OnRepairComplete;
 
-    private const float TIME_FOR_REPAIR = 20f;
+    private const float TIME_FOR_REPAIR = 30f;
 
     private void OnEnable()
     {

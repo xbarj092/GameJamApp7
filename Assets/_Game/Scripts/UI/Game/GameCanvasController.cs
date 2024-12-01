@@ -7,6 +7,11 @@ public class GameCanvasController : BaseCanvasController
     [SerializeField] private RepairScreen _repairScreenPrefab;
     [SerializeField] private WinScreen _winScreenPrefab;
 
+    private void Start()
+    {
+        TextManager.Instance.HandleCanvasSwitch();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && ScreenManager.Instance.ActiveGameScreen?.GameScreenType != GameScreenType.Death)
