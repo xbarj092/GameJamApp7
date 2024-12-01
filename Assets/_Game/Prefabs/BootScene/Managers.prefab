@@ -178,8 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eventsGeneral:
-  - {fileID: 3292573721347566598}
   - {fileID: 2830093545140301643}
+  - {fileID: 3292573721347566598}
   _events3D:
   - {fileID: 37743862471369129}
   _events2D:
@@ -381,10 +381,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textFieldPrefab: {fileID: 8269254307500479117, guid: 057165b271403aa4db9becebc4586c4d,
     type: 3}
+  _textFieldDeathPrefab: {fileID: 5610436023426476091, guid: 4df36a7e2a1dc5f43899afacc74f9c3d,
+    type: 3}
   _stringStorage:
   - {fileID: 11400000, guid: bb7968cad64cf984c88da80812072f1a, type: 2}
+  - {fileID: 11400000, guid: 8c2065c5c43b2a64aa257f49405e1311, type: 2}
   - {fileID: 11400000, guid: c0738ae1510ae2147bbb60e809627ccd, type: 2}
   - {fileID: 11400000, guid: c795389a8a6234a4cae43100688f7f81, type: 2}
+  - {fileID: 11400000, guid: 4ae29712927920349a156e8982b44305, type: 2}
   CurrentText: {fileID: 0}
 --- !u!1 &7531105811605514934
 GameObject:

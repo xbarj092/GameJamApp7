@@ -24,6 +24,10 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
 
     public void GoMenuToGame()
     {
+        EventManager.Instance.ResetScript();
+        GameManager.Instance.ResetScript();
+        ScreenManager.Instance.ResetScript();
+        TextManager.Instance.ResetScript();
         SceneLoader.OnSceneLoadDone += OnMenuToGameLoadDone;
         SceneLoader.LoadScene(SceneLoader.Scenes.GameScene, toUnload: SceneLoader.Scenes.MenuScene);
     }
@@ -107,8 +111,13 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
 
     public void RestartGame()
     {
+        EventManager.Instance.ResetScript();
+        GameManager.Instance.ResetScript();
+        ScreenManager.Instance.ResetScript();
+        TextManager.Instance.ResetScript();
+        Time.timeScale = 1;
         SceneLoader.OnSceneLoadDone += OnRestartGameDone;
-        SceneLoader.LoadScene(SceneLoader.Scenes.GameScene, toUnload: SceneLoader.Scenes.GameScene);
+        SceneLoader.LoadScene(SceneLoader.Scenes.GameScene, toUnload: SceneLoader.GetActiveScene());
     }
 
     private void OnRestartGameDone(SceneLoader.Scenes scenes)
