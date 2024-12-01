@@ -109,6 +109,5 @@ public class EventManager : MonoSingleton<EventManager>
         _activePermanentEvents = new();
         _currentEvent = null;
         InputDelay = 0;
-        TimeToLevelDisintegration = float.MaxValue;
     }
 }
