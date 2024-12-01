@@ -15,6 +15,5 @@ MonoBehaviour:
   <StringStorageType>k__BackingField: 11
   <FirstTimeStrings>k__BackingField:
   - Now is your chance to repair yourself
-  - Connect these wires
-  - You have limited tim to do it, so be quick
+  - Choose what you would like to repair
   <NextTimeStrings>k__BackingField: []

@@ -27,7 +27,7 @@ public class PlayerMovement1D : MonoBehaviour
 
     private void Update()
     {
-        if (ScreenManager.Instance.ActiveGameScreen == null)
+        if (ScreenManager.Instance.ActiveGameScreen == null && TextManager.Instance.CurrentText == null)
         {
             BufferCurrentInput();
             ProcessBufferedInput();

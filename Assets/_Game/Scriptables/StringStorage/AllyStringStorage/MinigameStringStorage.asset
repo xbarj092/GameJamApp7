@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f84bec4a9d4092428f078d4824ce73a, type: 3}
   m_Name: MinigameStringStorage
   m_EditorClassIdentifier: 
-  <StringStorageType>k__BackingField: 11
+  <StringStorageType>k__BackingField: 12
   <FirstTimeStrings>k__BackingField:
-  - Now is your chance to repair yourself
+  - Uh, no wonder you are all messed up
   - Connect these wires
   - You have limited tim to do it, so be quick
   <NextTimeStrings>k__BackingField: []
