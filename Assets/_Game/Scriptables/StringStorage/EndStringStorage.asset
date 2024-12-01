@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <StringStorageType>k__BackingField: 7
   <FirstTimeStrings>k__BackingField:
-  - So you have finally found me, congratulations
+  - Peekaboo, here I am
   <NextTimeStrings>k__BackingField:
   - this shouldnt play
