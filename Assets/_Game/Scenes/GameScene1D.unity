@@ -569,6 +569,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map 1D
       objectReference: {fileID: 0}
+    - target: {fileID: 2919938653389350807, guid: d21aa85ddb027f349bef8e9bb8f8d935,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18
+      objectReference: {fileID: 0}
     - target: {fileID: 3578994876332814101, guid: d21aa85ddb027f349bef8e9bb8f8d935,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -617,6 +622,16 @@ PrefabInstance:
     - target: {fileID: 3578994876332814101, guid: d21aa85ddb027f349bef8e9bb8f8d935,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399470214945989734, guid: d21aa85ddb027f349bef8e9bb8f8d935,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8587589115956950880, guid: d21aa85ddb027f349bef8e9bb8f8d935,
+        type: 3}
+      propertyPath: _next
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
