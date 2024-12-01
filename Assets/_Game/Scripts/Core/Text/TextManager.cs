@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +15,8 @@ public class TextManager : MonoSingleton<TextManager>
     private bool _isShowingText = false;
 
     public TextFieldShower CurrentText;
+    public StringStorageType CurrentTextType;
+    public bool Good;
 
     public void ShowText(StringStorageType stringStorageType, bool good = false)
     {
@@ -41,6 +42,8 @@ public class TextManager : MonoSingleton<TextManager>
 
         CurrentText = Instantiate(good ? _textFieldPrefabGood : _textFieldPrefab, ScreenManager.Instance.GetActiveCanvasTransform());
         StringStorage relevantStringStorage = _stringStorage.First(storage => storage.StringStorageType == stringStorageType);
+        CurrentTextType = relevantStringStorage.StringStorageType;
+        Good = good;
         CurrentText.InitTextField(!_playedStrings.Contains(relevantStringStorage) ? relevantStringStorage.FirstTimeStrings : relevantStringStorage.NextTimeStrings);
 
         CurrentText.OnTextFinished += HandleTextFinished;
@@ -70,6 +73,7 @@ public class TextManager : MonoSingleton<TextManager>
             CurrentText.OnTextFinished -= HandleTextFinished;
             Destroy(CurrentText.gameObject, 0.01f);
             CurrentText = null;
+            CurrentTextType = StringStorageType.None;
         }
     }
 
@@ -80,9 +84,29 @@ public class TextManager : MonoSingleton<TextManager>
 
     public void ResetScript()
     {
+        StopAllCoroutines();
         DestroyOldText();
         _playedStrings = new();
         _textQueue.Clear();
         _isShowingText = false;
+    }
+
+    public void HandleCanvasSwitch()
+    {
+        if (CurrentTextType != StringStorageType.None)
+        {
+            StringStorage relevantStringStorage = _playedStrings.FirstOrDefault(storage => storage.StringStorageType == CurrentTextType);
+            if (relevantStringStorage != null)
+            {
+                _playedStrings.Remove(relevantStringStorage);
+            }
+
+            _textQueue.Enqueue((CurrentTextType, Good));
+            CurrentTextType = StringStorageType.None;
+
+            StopAllCoroutines();
+            _isShowingText = false;
+            ProcessNextText();
+        }
     }
 }

@@ -30,7 +30,10 @@ public class GameManager : MonoSingleton<GameManager>
         {
             MaxLevel = CurrentLevel;
             OnLevelChanged?.Invoke();
-            EventManager.Instance.ChooseEvent();
+            if (MaxLevel < 5)
+            {
+                EventManager.Instance.ChooseEvent();
+            }
         }
         else if (CurrentLevel < MaxLevel)
         {
