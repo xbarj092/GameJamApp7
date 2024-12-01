@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f84bec4a9d4092428f078d4824ce73a, type: 3}
   m_Name: TimedRoundStringStorage
   m_EditorClassIdentifier: 
-  <StringStorageType>k__BackingField: 5
+  <StringStorageType>k__BackingField: 6
   <FirstTimeStrings>k__BackingField:
-  - So i finally got you, huh?
-  - I dont see you getting away this time
-  - Too bad you didnt get that information from me
-  <NextTimeStrings>k__BackingField: []
+  - This level is going to disintegrate in a while, better hurry!
+  <NextTimeStrings>k__BackingField:
+  - You already know that you need to hurry

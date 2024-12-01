@@ -31,8 +31,12 @@ public class TimedLevelEventStrategy : IEventStrategy
         float timeToLevelDisintegration = Random.Range(BASE_TIME_TO_DISINTEGRATION - 5, BASE_TIME_TO_DISINTEGRATION + 5);
         while (timeToLevelDisintegration > -1)
         {
-            timeToLevelDisintegration -= Time.deltaTime;
-            EventManager.Instance.TimeToLevelDisintegration = timeToLevelDisintegration;
+            if (ScreenManager.Instance.ActiveGameScreen == null)
+            {
+                timeToLevelDisintegration -= Time.deltaTime;
+                EventManager.Instance.TimeToLevelDisintegration = timeToLevelDisintegration;
+            }
+
             yield return null;
         }
 

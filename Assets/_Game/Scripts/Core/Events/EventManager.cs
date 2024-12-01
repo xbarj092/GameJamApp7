@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -101,10 +102,13 @@ public class EventManager : MonoSingleton<EventManager>
 
     public void ResetScript()
     {
+        if (ActivePermanentEvents.Any(gameEvent => gameEvent.GameEventType == GameEventType.InputChange))
+        {
+            ActivePermanentEvents.First(gameEvent => gameEvent.GameEventType == GameEventType.InputChange).StopEvent();
+        }
         _activePermanentEvents = new();
         _currentEvent = null;
         InputDelay = 0;
-        OnInputChangeInvoke(new() { "w", "s", "a", "d" });
         TimeToLevelDisintegration = float.MaxValue;
     }
 }
