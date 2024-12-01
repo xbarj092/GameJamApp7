@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,11 +14,23 @@ public class EventManager : MonoSingleton<EventManager>
     public float InputDelay;
     public InputActionReference MovementAction;
     public List<string> CurrentBinding = new();
+    private float _timeToLevelDisintegration;
+    public float TimeToLevelDisintegration
+    {
+        get => _timeToLevelDisintegration;
+        set
+        {
+            _timeToLevelDisintegration = value;
+            OnTimeToLevelDisintegrationChanged?.Invoke(value);
+        }
+    }
 
     private List<GameEvent> _activePermanentEvents = new();
     public List<GameEvent> ActivePermanentEvents => _activePermanentEvents;
     private GameEvent _currentEvent;
+    public GameEvent CurrentEvent => _currentEvent;
 
+    public event System.Action<float> OnTimeToLevelDisintegrationChanged;
     public event System.Action OnPermanentEventAdded;
     public event System.Action OnPermanentEventRemoved;
     public event System.Action<List<string>> OnInputChanged;
@@ -37,6 +50,7 @@ public class EventManager : MonoSingleton<EventManager>
 
     public void ChooseEvent()
     {
+        StopCurrentEvent();
         List<GameEvent> validEvents = new(_eventsGeneral);
         validEvents.RemoveAll(validEvent => _activePermanentEvents.Contains(validEvent));
 
@@ -56,17 +70,24 @@ public class EventManager : MonoSingleton<EventManager>
 
         int randomEventIndex = Random.Range(0, validEvents.Count);
         validEvents[randomEventIndex].ApplyEvent();
-        _currentEvent = validEvents[randomEventIndex];
-        if (_currentEvent.Permanent)
+        if (validEvents[randomEventIndex].Permanent)
         {
-            _activePermanentEvents.Add(_currentEvent);
+            _activePermanentEvents.Add(validEvents[randomEventIndex]);
             OnPermanentEventAdded?.Invoke();
+        }
+        else
+        {
+            _currentEvent = validEvents[randomEventIndex];
         }
     }
 
-    public void StopCurrentEvent()
+    private void StopCurrentEvent()
     {
-        _currentEvent.StopEvent();
+        if (_currentEvent != null)
+        {
+            _currentEvent.StopEvent();
+            _currentEvent = null;
+        }
     }
 
     public void StopPermanentEvent(GameEvent gameEvent)
@@ -81,9 +102,13 @@ public class EventManager : MonoSingleton<EventManager>
 
     public void ResetScript()
     {
+        if (ActivePermanentEvents.Any(gameEvent => gameEvent.GameEventType == GameEventType.InputChange))
+        {
+            ActivePermanentEvents.First(gameEvent => gameEvent.GameEventType == GameEventType.InputChange).StopEvent();
+        }
         _activePermanentEvents = new();
         _currentEvent = null;
         InputDelay = 0;
-        OnInputChangeInvoke(new() { "w", "s", "a", "d" });
+        TimeToLevelDisintegration = float.MaxValue;
     }
 }

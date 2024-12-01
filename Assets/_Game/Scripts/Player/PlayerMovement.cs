@@ -9,6 +9,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private float _speed = 10f;
 
+    [Space(5)]
+    [SerializeField] private NoiseSettings _standingNoise;
+    [SerializeField] private NoiseSettings _movingNoise;
+    private CinemachineBasicMultiChannelPerlin _noise;
+
     private InputAction _movementInput;
     private Queue<InputFrame> _inputBuffer = new();
 
@@ -20,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        _noise = _virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         Cursor.lockState = CursorLockMode.Confined;
 
         PlayerInput playerInput = GetComponent<PlayerInput>();
@@ -79,7 +85,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (direction == Vector2.zero)
         {
+            if (_noise != null)
+            {
+                _noise.m_NoiseProfile = _standingNoise;
+            }
             return;
+        }
+
+        if (_noise != null)
+        {
+            _noise.m_NoiseProfile = _movingNoise;
         }
 
         Vector3 moveDirection = transform.TransformDirection(new Vector3(direction.x, 0, direction.y)).normalized;

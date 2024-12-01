@@ -67,4 +67,15 @@ public class AudioManager : MonoSingleton<AudioManager>
         Muted = mute;
         AudioListener.volume = mute ? 0 : 1;
     }
+
+    public void StopAllSounds()
+    {
+        foreach (Sound sound in Sounds)
+        {
+            if (IsPlaying(sound.name))
+            {
+                Stop(sound.name);
+            }
+        }
+    }
 }
