@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <StringStorageType>k__BackingField: 3
   <FirstTimeStrings>k__BackingField:
-  - Lets shrink the space your are walking in
+  - Enjoying yourself? Then how about a change of pace?
+  - As you would surely enjoy crawling on the ground.
   <NextTimeStrings>k__BackingField:
-  - Lets shrink the space your are walking in again
+  - You shall shrink again.

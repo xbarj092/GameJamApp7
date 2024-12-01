@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <StringStorageType>k__BackingField: 5
   <FirstTimeStrings>k__BackingField:
-  - So i finally got you, huh?
-  - I dont see you getting away this time
-  - Too bad you didnt get that information from me
+  - Wondering where you are?
+  - No need for you to know as you'll soon disappear...
+  - ...then, it is goodbye
   <NextTimeStrings>k__BackingField: []
