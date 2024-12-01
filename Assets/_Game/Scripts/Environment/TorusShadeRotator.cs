@@ -10,7 +10,6 @@ public class TorusShadeRotator : MonoBehaviour
 
         // Calculate the opposite position
         Vector3 oppositeDirection = playerPosition.normalized;
-        Debug.Log(oppositeDirection);
 
         // Determine the position for the blocker shape
         Quaternion targetRotation = Quaternion.LookRotation(oppositeDirection, Vector3.up);

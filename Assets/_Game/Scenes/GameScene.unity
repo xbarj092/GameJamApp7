@@ -836,30 +836,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2643635881937474782, guid: 9fb3b7b3902f7684e8d6460be19cd790,
-        type: 3}
-      propertyPath: m_Name
-      value: Light Lower
-      objectReference: {fileID: 0}
     - target: {fileID: 4230005720231457452, guid: 9fb3b7b3902f7684e8d6460be19cd790,
         type: 3}
       propertyPath: m_Name
       value: Map
-      objectReference: {fileID: 0}
-    - target: {fileID: 6695253899247931669, guid: 9fb3b7b3902f7684e8d6460be19cd790,
-        type: 3}
-      propertyPath: m_Name
-      value: Light Upper
-      objectReference: {fileID: 0}
-    - target: {fileID: 7779980171280866989, guid: 9fb3b7b3902f7684e8d6460be19cd790,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8073523475767818984, guid: 9fb3b7b3902f7684e8d6460be19cd790,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 8895337800991025802, guid: 9fb3b7b3902f7684e8d6460be19cd790,
         type: 3}
