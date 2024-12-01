@@ -9,12 +9,15 @@ public class HUD : MonoBehaviour
     [SerializeField] private Image _progressBarFill;
     [SerializeField] private List<TMP_Text> _keyTexts;
     [SerializeField] private TMP_Text _timeText;
+    [SerializeField] private GameObject _hackingTimeout;
 
     private const float TIME_FOR_REPAIR = 100f;
     private const string DISINTEGRATION_TIME = "Time to disintegration: ";
 
-    private void Awake()
+    private void Start()
     {
+        _hackingTimeout.SetActive(TextManager.Instance.HasPlayedTutorial(StringStorageType.HackingTimeout));
+
         OnInputChanged(EventManager.Instance.CurrentBinding);
         StartTimeToNextRepair();
     }
@@ -23,6 +26,8 @@ public class HUD : MonoBehaviour
     {
         GameManager.Instance.OnRepairTimerReset += StartTimeToNextRepair;
         GameManager.Instance.OnLevelChanged += OnLevelChanged;
+        GameManager.Instance.OnTutorialFinished += OnTutorialFinished;
+
         EventManager.Instance.OnPermanentEventAdded += StartTimeToNextRepair;
         EventManager.Instance.OnPermanentEventRemoved += StopAllCoroutines;
         EventManager.Instance.OnInputChanged += OnInputChanged;
@@ -33,6 +38,8 @@ public class HUD : MonoBehaviour
     {
         GameManager.Instance.OnRepairTimerReset -= StartTimeToNextRepair;
         GameManager.Instance.OnLevelChanged -= OnLevelChanged;
+        GameManager.Instance.OnTutorialFinished -= OnTutorialFinished;
+
         EventManager.Instance.OnPermanentEventAdded -= StartTimeToNextRepair;
         EventManager.Instance.OnPermanentEventRemoved -= StopAllCoroutines;
         EventManager.Instance.OnInputChanged -= OnInputChanged;
@@ -76,6 +83,16 @@ public class HUD : MonoBehaviour
         {
             _keyTexts[i].text = list[i];
         }
+    }
+
+    private void OnTutorialFinished(StringStorageType type)
+    {
+        if (type != StringStorageType.HackingTimeout)
+        {
+            return;
+        }
+
+        _hackingTimeout.SetActive(true);
     }
 
     private void OnTimeToDisintegrateChanged(float secondsLeft)

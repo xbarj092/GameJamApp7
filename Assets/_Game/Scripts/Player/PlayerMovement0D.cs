@@ -10,6 +10,13 @@ public class PlayerMovement0D : MonoBehaviour
 
     private void EndGame()
     {
-        TextManager.Instance.ShowText(StringStorageType.ZeroDimension, true);
+        TextManager.Instance.ShowText(StringStorageType.ZeroDimension);
+        TextManager.Instance.CurrentText.OnTextFinished += OnTextFinished;
+    }
+
+    private void OnTextFinished()
+    {
+        TextManager.Instance.CurrentText.OnTextFinished -= OnTextFinished;
+        ScreenEvents.OnGameScreenOpenedInvoke(GameScreenType.Death);
     }
 }

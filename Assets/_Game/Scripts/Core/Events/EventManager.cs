@@ -72,6 +72,12 @@ public class EventManager : MonoSingleton<EventManager>
         validEvents[randomEventIndex].ApplyEvent();
         if (validEvents[randomEventIndex].Permanent)
         {
+            if (!TextManager.Instance.HasPlayedTutorial(StringStorageType.HackingTimeout))
+            {
+                TextManager.Instance.ShowText(StringStorageType.HackingTimeout, true);
+                TextManager.Instance.CurrentText.OnTextFinished += OnTextFinished;
+            }
+
             _activePermanentEvents.Add(validEvents[randomEventIndex]);
             OnPermanentEventAdded?.Invoke();
         }
@@ -79,6 +85,12 @@ public class EventManager : MonoSingleton<EventManager>
         {
             _currentEvent = validEvents[randomEventIndex];
         }
+    }
+
+    private void OnTextFinished()
+    {
+        TextManager.Instance.CurrentText.OnTextFinished -= OnTextFinished;
+        GameManager.Instance.OnTutorialFinishedInvoke(StringStorageType.HackingTimeout);
     }
 
     private void StopCurrentEvent()

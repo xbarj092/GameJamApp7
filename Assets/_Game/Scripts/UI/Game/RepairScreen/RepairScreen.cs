@@ -7,6 +7,14 @@ public class RepairScreen : GameScreen
 
     private GameEvent _chosenGameEvent;
 
+    private void Start()
+    {
+        if (!TextManager.Instance.HasPlayedTutorial(StringStorageType.Repairing))
+        {
+            TextManager.Instance.ShowText(StringStorageType.Repairing, true);
+        }
+    }
+
     private void OnEnable()
     {
         TextManager.Instance.DestroyOldText();

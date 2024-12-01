@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
 
 public class TextFieldShower : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class TextFieldShower : MonoBehaviour
     private List<string> _strings;
     private int _currentTextIndex = 0;
 
+    public event Action OnTextFinished;
+
     private void OnDisable()
     {
         AudioManager.Instance.Stop(SoundType.TextTypeSFX);
@@ -31,6 +34,11 @@ public class TextFieldShower : MonoBehaviour
 
     public void InitTextField(List<string> strings)
     {
+        if (strings == null || strings.Count == 0)
+        {
+            Finish();
+        }
+
         _aiImage.sprite = DetermineAISprite(GameManager.Instance.CurrentLevel);
         _currentTextIndex = 0;
         _strings = strings;
@@ -101,7 +109,7 @@ public class TextFieldShower : MonoBehaviour
                 _currentTextIndex++;
                 if (_currentTextIndex >= _strings.Count)
                 {
-                    Destroy();
+                    Finish();
                     return;
                 }
 
@@ -110,8 +118,8 @@ public class TextFieldShower : MonoBehaviour
         }
     }
 
-    protected virtual void Destroy()
+    private void Finish()
     {
-        Destroy(gameObject);
+        OnTextFinished?.Invoke();
     }
 }
