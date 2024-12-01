@@ -8,7 +8,7 @@ public class GameCanvasController : BaseCanvasController
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && ScreenManager.Instance.ActiveGameScreen?.GameScreenType != GameScreenType.Death)
         {
             if (GameManager.Instance.Paused)
             {

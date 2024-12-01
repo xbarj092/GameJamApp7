@@ -34,11 +34,11 @@ public class TextFieldShower : MonoBehaviour
 
     private Sprite DetermineAISprite(int currentLevel)
     {
-        if (currentLevel > 7)
+        if (currentLevel > 4)
         {
             return _aiMadSprite;
         }
-        else if (currentLevel > 2)
+        else if (currentLevel > 1)
         {
             return _aiMidSprite;
         }

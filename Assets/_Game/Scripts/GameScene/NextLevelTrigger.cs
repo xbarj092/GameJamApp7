@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class NextLevel : MonoBehaviour
 {
+    [SerializeField] private GameObject _torusGroundBase;
+    [SerializeField] private GameObject _torusWallBase;
+
+    [SerializeField] private GameObject _torusGroundEnd;
+    [SerializeField] private GameObject _torusWallEnd;
+
     private Vector3 _lastPosition;
     private bool _isPlayerInTrigger = false;
     private bool _increasedLevel = false;
@@ -48,14 +54,25 @@ public class NextLevel : MonoBehaviour
             if (_increasedLevel)
             {
                 GameManager.Instance.IncreaseLevel();
+                SwitchModels(GameManager.Instance.CurrentLevel == 5);
             }
             else
             {
                 GameManager.Instance.DecreaseLevel();
+                SwitchModels(GameManager.Instance.CurrentLevel == 5);
             }
 
             _isPlayerInTrigger = false;
             _increasedLevel = false;
         }
+    }
+
+    private void SwitchModels(bool end)
+    {
+        Debug.Log("Switching models - " + end);
+        _torusGroundBase.SetActive(!end);
+        _torusWallBase.SetActive(!end);
+        _torusGroundEnd.SetActive(end);
+        _torusWallEnd.SetActive(end);
     }
 }

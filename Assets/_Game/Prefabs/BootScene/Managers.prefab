@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentLevel: 1
   MaxLevel: 1
+  Paused: 0
   TimeToNextRepair: 0
 --- !u!1 &5231721350433640374
 GameObject:
@@ -182,8 +183,7 @@ MonoBehaviour:
   - {fileID: 2830093545140301643}
   - {fileID: 3292573721347566598}
   - {fileID: 2050857803699240253}
-  _events3D:
-  - {fileID: 37743862471369129}
+  _events3D: []
   _events2D:
   - {fileID: 7958582485701604806}
   _events1D:
