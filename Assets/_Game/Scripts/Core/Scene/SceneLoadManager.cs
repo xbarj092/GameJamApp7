@@ -98,7 +98,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     public void GoGameToMenu()
     {
         SceneLoader.OnSceneLoadDone += OnGameToMenuLoadDone;
-        SceneLoader.LoadScene(SceneLoader.Scenes.MenuScene, toUnload: SceneLoader.Scenes.GameScene);
+        SceneLoader.LoadScene(SceneLoader.Scenes.MenuScene, toUnload: SceneLoader.GetActiveScene());
     }
 
     private void OnGameToMenuLoadDone(SceneLoader.Scenes scenes)

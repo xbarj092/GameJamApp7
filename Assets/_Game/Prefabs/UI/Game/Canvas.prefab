@@ -121,6 +121,8 @@ MonoBehaviour:
     type: 3}
   _repairScreenPrefab: {fileID: 710283586237491124, guid: 2a617f4fc81551e4baca7ab6bd3b1c92,
     type: 3}
+  _winScreenPrefab: {fileID: 3845033275807525522, guid: 87a7af531d4622842ad14a8fb9cdb94e,
+    type: 3}
 --- !u!1001 &205150368081767988
 PrefabInstance:
   m_ObjectHideFlags: 0
