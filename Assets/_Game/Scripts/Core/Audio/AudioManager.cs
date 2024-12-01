@@ -78,4 +78,26 @@ public class AudioManager : MonoSingleton<AudioManager>
             }
         }
     }
+
+    public void Pause()
+    {
+        foreach (AudioSource source in GetComponents<AudioSource>())
+        {
+            if (!source.loop)
+            {
+                source.Pause();
+            }
+        }
+    }
+
+    public void Unpause()
+    {
+        foreach (AudioSource source in GetComponents<AudioSource>())
+        {
+            if (!source.loop)
+            {
+                source.UnPause();
+            }
+        }
+    }
 }

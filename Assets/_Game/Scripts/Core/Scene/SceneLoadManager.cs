@@ -1,6 +1,3 @@
-using System;
-using UnityEngine;
-
 public class SceneLoadManager : MonoSingleton<SceneLoadManager>
 {
     protected override void Init()
@@ -18,17 +15,18 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     private void OnBootToMenuLoadDone(SceneLoader.Scenes scene)
     {
         PlayMenuMusic();
-        Time.timeScale = 1;
+        GameManager.Instance.Unpause();
         SceneLoader.OnSceneLoadDone -= OnBootToMenuLoadDone;
     }
 
     public void GoMenuToGame()
     {
         EventManager.Instance.ResetScript();
-        AudioManager.Instance.StopAllSounds();
         GameManager.Instance.ResetScript();
         ScreenManager.Instance.ResetScript();
         TextManager.Instance.ResetScript();
+        GameManager.Instance.Unpause();
+        AudioManager.Instance.StopAllSounds();
         SceneLoader.OnSceneLoadDone += OnMenuToGameLoadDone;
         SceneLoader.LoadScene(SceneLoader.Scenes.GameScene, toUnload: SceneLoader.Scenes.MenuScene);
     }
@@ -106,18 +104,18 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     private void OnGameToMenuLoadDone(SceneLoader.Scenes scenes)
     {
         PlayMenuMusic();
-        Time.timeScale = 1;
+        GameManager.Instance.Unpause();
         SceneLoader.OnSceneLoadDone -= OnGameToMenuLoadDone;
     }
 
     public void RestartGame()
     {
         EventManager.Instance.ResetScript();
-        AudioManager.Instance.StopAllSounds();
         GameManager.Instance.ResetScript();
         ScreenManager.Instance.ResetScript();
         TextManager.Instance.ResetScript();
-        Time.timeScale = 1;
+        GameManager.Instance.Unpause();
+        AudioManager.Instance.StopAllSounds();
         SceneLoader.OnSceneLoadDone += OnRestartGameDone;
         SceneLoader.LoadScene(SceneLoader.Scenes.GameScene, toUnload: SceneLoader.GetActiveScene());
     }
@@ -125,6 +123,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     private void OnRestartGameDone(SceneLoader.Scenes scenes)
     {
         PlayGameMusic();
+        TextManager.Instance.ShowText(StringStorageType.Intro);
         SceneLoader.OnSceneLoadDone -= OnRestartGameDone;
     }
 

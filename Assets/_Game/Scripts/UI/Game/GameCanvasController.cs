@@ -10,14 +10,14 @@ public class GameCanvasController : BaseCanvasController
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (ScreenManager.Instance.ActiveGameScreen != null)
+            if (GameManager.Instance.Paused)
             {
-                Time.timeScale = 1;
+                GameManager.Instance.Unpause();
                 ScreenEvents.OnGameScreenClosedInvoke(GameScreenType.Pause);
             }
             else
             {
-                Time.timeScale = 0;
+                GameManager.Instance.Pause();
                 ScreenEvents.OnGameScreenOpenedInvoke(GameScreenType.Pause);
             }
         }
