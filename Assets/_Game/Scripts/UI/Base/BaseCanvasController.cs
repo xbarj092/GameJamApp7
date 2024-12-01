@@ -25,7 +25,10 @@ public class BaseCanvasController : MonoBehaviour
             InstantiateScreen(gameScreenType);
         }
 
-        _instantiatedScreens[gameScreenType].Open();
+        if (_instantiatedScreens.ContainsKey(gameScreenType))
+        {
+            _instantiatedScreens[gameScreenType]?.Open();
+        }
     }
 
     private void CloseGameScreen(GameScreenType gameScreenType)

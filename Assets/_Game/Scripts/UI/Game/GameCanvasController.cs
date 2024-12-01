@@ -6,6 +6,23 @@ public class GameCanvasController : BaseCanvasController
     [SerializeField] private PauseScreen _pauseScreenPrefab;
     [SerializeField] private RepairScreen _repairScreenPrefab;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (ScreenManager.Instance.ActiveGameScreen != null)
+            {
+                Time.timeScale = 1;
+                ScreenEvents.OnGameScreenClosedInvoke(GameScreenType.Pause);
+            }
+            else
+            {
+                Time.timeScale = 0;
+                ScreenEvents.OnGameScreenOpenedInvoke(GameScreenType.Pause);
+            }
+        }
+    }
+
     protected override GameScreen GetRelevantScreen(GameScreenType gameScreenType)
     {
         return gameScreenType switch

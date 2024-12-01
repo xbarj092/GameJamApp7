@@ -16,6 +16,7 @@ public class TextFieldShower : MonoBehaviour
     [SerializeField] private TMP_Text _tmpProText;
     [SerializeField] private float _delayBeforeStart = 0f;
     [SerializeField] private float _timeBtwChars = 0.1f;
+    [SerializeField] private GameObject _clickToContinue;
 
     private string _writer;
     private bool _isTyping = false;
@@ -54,6 +55,7 @@ public class TextFieldShower : MonoBehaviour
         _tmpProText.text = "";
         _isTyping = true;
         _isTextComplete = false;
+        _clickToContinue.SetActive(false);
         StartCoroutine(TypeWriterTMP());
     }
 
@@ -77,6 +79,7 @@ public class TextFieldShower : MonoBehaviour
 
         AudioManager.Instance.Stop(SoundType.TextTypeSFX);
 
+        _clickToContinue.SetActive(true);
         _isTyping = false;
         _isTextComplete = true;
     }
@@ -94,12 +97,17 @@ public class TextFieldShower : MonoBehaviour
                 _currentTextIndex++;
                 if (_currentTextIndex >= _strings.Count)
                 {
-                    Destroy(gameObject);
+                    Destroy();
                     return;
                 }
 
                 SetText();
             }
         }
+    }
+
+    protected virtual void Destroy()
+    {
+        Destroy(gameObject);
     }
 }

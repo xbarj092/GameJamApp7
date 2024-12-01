@@ -15,6 +15,7 @@ public class InputChangeEventStrategy : IEventStrategy
 
     public void ApplyEvent()
     {
+        TextManager.Instance.ShowText(StringStorageType.InputChange);
         _usedKeys.Clear();
         InputAction action = EventManager.Instance.MovementAction.action;
         List<string> keys = new();

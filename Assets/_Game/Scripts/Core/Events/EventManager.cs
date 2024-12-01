@@ -78,4 +78,12 @@ public class EventManager : MonoSingleton<EventManager>
             OnPermanentEventRemoved?.Invoke();
         }
     }
+
+    public void ResetScript()
+    {
+        _activePermanentEvents = new();
+        _currentEvent = null;
+        InputDelay = 0;
+        OnInputChangeInvoke(new() { "w", "s", "a", "d" });
+    }
 }

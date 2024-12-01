@@ -32,4 +32,11 @@ public class GameManager : MonoSingleton<GameManager>
     {
         CurrentLevel--;
     }
+
+    public void ResetScript()
+    {
+        TimeToNextRepair = 0;
+        CurrentLevel = 1;
+        MaxLevel = 1;
+    }
 }
